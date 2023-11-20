@@ -1,18 +1,9 @@
-cmake_minimum_required(VERSION 3.20)
-project(11_lab)
+cmake_minimum_required(VERSION 3.27.4)
 
-set(CMAKE_CXX_STANDARD 17)
+project(lab11)
 
-add_executable(Lab src/main.cpp)
+add_executable(lab11 main.cpp)
 
-include_directories(/usr/local/include)
-
-find_package(
-  SFML 2.5
-  COMPONENTS graphics
-  REQUIRED)
-
-if(SFML_FOUND)
-  include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(Lab sfml-graphics sfml-window sfml-system)
-endif()
+target_link_libraries(lab11 sfml-graphics)
+target_link_libraries(lab11 sfml-window)
+target_link_libraries(lab11 sfml-system)
