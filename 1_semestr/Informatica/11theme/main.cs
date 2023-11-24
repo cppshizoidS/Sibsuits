@@ -8,39 +8,41 @@
 
 using System;
 
-int[] Function27(int[,] array2d, int n)
-{
-    int rows = array2d.GetLength(0);
-    int cols = array2d.GetLength(1);
-    int[] counts = new int[rows];
-
-    for (int i = 0; i < rows; i++)
+namespace src;
+public static partial class HW27 {
+    public static int[] Function27(int[,] array2d, int n)
     {
-        for (int j = 0; j < cols; j++)
+        int rows = array2d.GetLength(0);
+        int cols = array2d.GetLength(1);
+        int[] counts = new int[rows];
+
+        for (int i = 0; i < rows; i++)
         {
-            if (array2d[i, j] % n == 0)
+            for (int j = 0; j < cols; j++)
             {
-                counts[i]++;
+                if (array2d[i, j] % n == 0)
+                {
+                    counts[i]++;
+                }
             }
         }
+
+        int maxCount = counts.Max();
+        List<int> result = new List<int>();
+        for (int i = 0; i < rows; i++)
+        {
+            if (counts[i] == maxCount)
+            {
+                result.Add(i + 1);
+            }
+        }
+        int[] resultArray = result.ToArray();
+
+        return resultArray;
     }
-
-    int maxCount = counts.Max();
-    int[] result = Enumerable
-        .Range(0, rows)
-        .Where(i => counts[i] == maxCount)
-        .Select(i => i + 1)
-        .ToArray();
-
-    return result;
 }
 
-int[,] array2d = new int[,]
-{
-    { 2, 6, 9 },
-    { 9, 15, 18 },
-    { 20, 25, 30 }
-};
+
 
 int n = 3;
 
