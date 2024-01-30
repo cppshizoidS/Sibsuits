@@ -1,58 +1,58 @@
 #include <iostream>
-#include <array>
+#include <vector>
 #include <random>
 
-const int max_size = 100;
-
-//заполнение массива возрастающими числами
-void FillInc(std::array<int, max_size>& A) {
+// заполнение массива возрастающими числами
+void FillInc(std::vector<int>& A, int n) {
     int i = 1;
+    A.resize(n);
     for (auto& element : A) {
         element = i++;
     }
 }
 
 // заполнение массива убывающими числами
-void FillDec(std::array<int, max_size>& A) {
-    int i = A.size();
+void FillDec(std::vector<int>& A, int n) {
+    int i = n;
+    A.resize(n);
     for (auto& element : A) {
         element = i--;
     }
 }
 
 // заполнение массива случайными числами
-void FillRand(std::array<int, max_size>& A) {
+void FillRand(std::vector<int>& A, int n) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(1, max_size);
+    std::uniform_int_distribution<int> dis(1, n);
 
+    A.resize(n);
     for (auto& element : A) {
         element = dis(gen);
     }
 }
-    
-//подсчет контрольной суммы элементов массива
-int CheckSum(const std::array<int, max_size>& A) {
-    int sum = 0;
-    for (const auto& element : A) {
-        sum += element;
-    }
-    return sum;
+
+// подсчет контрольной суммы элементов массива
+int CheckSum(const std::vector<int>& A) {
+    return std::accumulate(A.begin(), A.end(), 0);
 }
 
 // подсчет количества серий в массиве
-int RunNumber(const std::array<int, max_size>& A) {
+int RunNumber(const std::vector<int>& A) {
     int count = 1;
-    for (auto it = A.begin() + 1; it != A.end(); ++it) {
-        if (*it < *(it - 1)) {
+    auto prev = A.begin();
+
+    for (auto it = std::next(A.begin()); it != A.end(); ++it) {
+        if (*it < *prev) {
             ++count;
         }
+        prev = it;
     }
     return count;
 }
 
 // вывод массива на экран
-void PrintMas(const std::array<int, max_size>& A) {
+void PrintMas(const std::vector<int>& A) {
     for (const auto& element : A) {
         std::cout << element << " ";
     }
@@ -64,21 +64,21 @@ auto main() -> int {
     std::cout << "Введите размер массива: ";
     std::cin >> n;
 
-    std::array<int, max_size> A;
+    std::vector<int> A;
 
-    FillInc(A);
+    FillInc(A, n);
     std::cout << "Возрастающий массив: ";
     PrintMas(A);
     std::cout << "Контрольная сумма: " << CheckSum(A) << std::endl;
     std::cout << "Количество серий: " << RunNumber(A) << std::endl << std::endl;
 
-    FillDec(A);
+    FillDec(A, n);
     std::cout << "Убывающий массив: ";
     PrintMas(A);
     std::cout << "Контрольная сумма: " << CheckSum(A) << std::endl;
     std::cout << "Количество серий: " << RunNumber(A) << std::endl << std::endl;
 
-    FillRand(A);
+    FillRand(A, n);
     std::cout << "Случайный массив: ";
     PrintMas(A);
     std::cout << "Контрольная сумма: " << CheckSum(A) << std::endl;
