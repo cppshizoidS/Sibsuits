@@ -1,8 +1,17 @@
+/**
+ * @file main.cpp
+ * @brief Программа, демонстрирующая работу с массивами и реализующая функции для заполнения, обработки и вывода массивов.
+ */
+
 #include <iostream>
 #include <vector>
 #include <random>
 
-// заполнение массива возрастающими числами
+/**
+ * @brief Заполняет массив элементами, увеличивая их последовательно от 1 до n.
+ * @param[out] A Массив, который будет заполнен.
+ * @param[in] n Размер массива.
+ */
 void FillInc(std::vector<int>& A, int n) {
     int i = 1;
     A.resize(n);
@@ -11,7 +20,11 @@ void FillInc(std::vector<int>& A, int n) {
     }
 }
 
-// заполнение массива убывающими числами
+/**
+ * @brief Заполняет массив элементами, уменьшая их последовательно от n до 1.
+ * @param[out] A Массив, который будет заполнен.
+ * @param[in] n Размер массива.
+ */
 void FillDec(std::vector<int>& A, int n) {
     int i = n;
     A.resize(n);
@@ -20,7 +33,11 @@ void FillDec(std::vector<int>& A, int n) {
     }
 }
 
-// заполнение массива случайными числами
+/**
+ * @brief Заполняет массив случайными числами в диапазоне от 1 до n.
+ * @param[out] A Массив, который будет заполнен.
+ * @param[in] n Размер массива.
+ */
 void FillRand(std::vector<int>& A, int n) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -32,12 +49,20 @@ void FillRand(std::vector<int>& A, int n) {
     }
 }
 
-// подсчет контрольной суммы элементов массива
+/**
+ * @brief Вычисляет контрольную сумму элементов массива.
+ * @param[in] A Массив, для которого нужно вычислить контрольную сумму.
+ * @return Контрольная сумма.
+ */
 int CheckSum(const std::vector<int>& A) {
     return std::accumulate(A.begin(), A.end(), 0);
 }
 
-// подсчет количества серий в массиве
+/**
+ * @brief Вычисляет количество серий в массиве (подряд идущих упорядоченных элементов).
+ * @param[in] A Массив, для которого нужно вычислить количество серий.
+ * @return Количество серий в массиве.
+ */
 int RunNumber(const std::vector<int>& A) {
     int count = 1;
     auto prev = A.begin();
@@ -51,7 +76,10 @@ int RunNumber(const std::vector<int>& A) {
     return count;
 }
 
-// вывод массива на экран
+/**
+ * @brief Выводит массив на экран.
+ * @param[in] A Массив, который нужно вывести.
+ */
 void PrintMas(const std::vector<int>& A) {
     for (const auto& element : A) {
         std::cout << element << " ";
