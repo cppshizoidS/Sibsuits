@@ -1,5 +1,5 @@
 # Required packages
-cmake, ninja(recommended), clang/gcc
+cmake, ninja(recommended), clang/gcc, clang-format
 
 # Run
 ```
@@ -8,4 +8,9 @@ cd build
 cmake .. -G=Ninja
 ninja -j($nproc)
 ./1_lab
+```
+# Clang-format
+
+```
+clang-format -i *.cpp
 ```
