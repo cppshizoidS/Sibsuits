@@ -1,7 +1,17 @@
+/**
+ * @brief Программа для вычисления суммы элементов каждой строки в матрице.
+ */
+
 #include <array>
 #include <iostream>
 
-// Функция вычисления суммы элементов каждой строки
+/**
+ * @brief Функция вычисления суммы элементов каждой строки в матрице.
+ * @tparam Rows Количество строк в матрице.
+ * @tparam Cols Количество столбцов в матрице.
+ * @param matrix Матрица целых чисел.
+ * @return Массив сумм элементов каждой строки.
+ */
 template <std::size_t Rows, std::size_t Cols>
 std::array<int, Rows> sumOfRows(const std::array<std::array<int, Cols>, Rows> &matrix) {
     std::array<int, Rows> sums{};
@@ -13,6 +23,10 @@ std::array<int, Rows> sumOfRows(const std::array<std::array<int, Cols>, Rows> &m
     return sums;
 }
 
+/**
+ * @brief Главная функция программы.
+ * @return Возвращает 0 в случае успешного завершения программы.
+ */
 int main() {
     // Задание 2
     std::array<std::array<int, 4>, 3> matrix = {
