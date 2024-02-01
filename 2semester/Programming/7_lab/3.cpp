@@ -1,13 +1,26 @@
+/**
+ * @brief Программа для сортировки в порядке убывания и поиска элементов в массивах.
+ */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 
-// функция сортировки в порядке убывания
+/**
+ * @brief Функция сортировки в порядке убывания.
+ * @param arr Вектор целых чисел.
+ */
 void sortDescending(std::vector<int>& arr) {
     std::sort(arr.rbegin(), arr.rend());
 }
 
-// функция поиска элемента перебором
+/**
+ * @brief Функция линейного поиска.
+ * @param arr Вектор целых чисел.
+ * @param target Искомый элемент.
+ * @param comparisons Количество сравнений.
+ * @return Индекс найденного элемента или -1, если элемент не найден.
+ */
 int linearSearch(const std::vector<int>& arr, int target, int& comparisons) {
     comparisons = 0;
     for (size_t i = 0; i < arr.size(); ++i) {
@@ -19,7 +32,13 @@ int linearSearch(const std::vector<int>& arr, int target, int& comparisons) {
     return -1;  // элемент не найден
 }
 
-// функция бинарного поиска
+/**
+ * @brief Функция бинарного поиска.
+ * @param arr Вектор целых чисел (предполагается, что вектор отсортирован в порядке убывания).
+ * @param target Искомый элемент.
+ * @param comparisons Количество сравнений.
+ * @return Индекс найденного элемента или -1, если элемент не найден.
+ */
 int binarySearch(const std::vector<int>& arr, int target, int& comparisons) {
     comparisons = 0;
     int left = 0;
@@ -41,6 +60,10 @@ int binarySearch(const std::vector<int>& arr, int target, int& comparisons) {
     return -1;  // элемент не найден
 }
 
+/**
+ * @brief Главная функция программы.
+ * @return Возвращает 0 в случае успешного завершения программы.
+ */
 int main() {
     // создаем массивы
     std::vector<int> arr100(100);
