@@ -1,8 +1,16 @@
+/**
+ * @brief Программа для обнуления элементов между двумя минимальными значениями в массиве.
+ */
+
 #include <algorithm>
 #include <array>
 #include <iostream>
 
-// Функция обнуления элементов между двумя минимальными значениями
+/**
+ * @brief Функция обнуления элементов между двумя минимальными значениями в массиве.
+ * @tparam N Размер массива.
+ * @param arr Массив целых чисел.
+ */
 template <std::size_t N>
 void zeroBetweenMin(std::array<int, N> &arr) {
     auto minMaxPair = std::minmax_element(arr.begin(), arr.end());
@@ -20,6 +28,11 @@ void zeroBetweenMin(std::array<int, N> &arr) {
 
     std::for_each(nextMin1, nextMin2, [](int &element) { element = 0; });
 }
+
+/**
+ * @brief Главная функция программы.
+ * @return Возвращает 0 в случае успешного завершения программы.
+ */
 int main() {
     // Задание 1
     std::array<int, 8> arr1 = {5, 2, 10, 10, 10, 1, 6, 1};
