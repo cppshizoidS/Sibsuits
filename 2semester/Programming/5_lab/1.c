@@ -1,7 +1,18 @@
+/**
+ * @file matrix_processing.c
+ * @brief Программа для генерации массива случайных чисел и создания матрицы на основе этого массива.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
+/**
+ * @brief Вывод матрицы на экран.
+ * @param B Матрица для вывода.
+ * @param rows Количество строк в матрице.
+ * @param cols Количество столбцов в матрице.
+ */
 void printMatrix(int** B, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -11,6 +22,10 @@ void printMatrix(int** B, int rows, int cols) {
     }
 }
 
+/**
+ * @brief Главная функция программы.
+ * @return Возвращает 0 в случае успешного завершения программы.
+ */
 int main() {
     int m, k;
 
