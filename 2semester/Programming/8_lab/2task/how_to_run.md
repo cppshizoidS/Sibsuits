@@ -3,7 +3,7 @@ cmake, ninja(recommended), clang/gcc, clang-format
 
 # Before run
 ```
-mv 1.cpp main.cpp
+mv 2.cpp main.cpp
 ````
 
 # Run
