@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab",
+  "command": "/usr/lib64/ccache/c++ -std=gnu++23 -o CMakeFiles/1_task.dir/main.cpp.o -c /home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab/main.cpp",
+  "file": "/home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab/main.cpp",
+  "output": "CMakeFiles/1_task.dir/main.cpp.o"
+}
+]

@@ -1,0 +1,3 @@
+/home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab/build/CMakeFiles/1_task.dir
+/home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab/build/CMakeFiles/edit_cache.dir
+/home/cppshizoid/Documents/Sibsutis/2_semestr/Proga/10_lab/build/CMakeFiles/rebuild_cache.dir
