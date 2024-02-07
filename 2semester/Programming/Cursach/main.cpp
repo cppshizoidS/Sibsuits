@@ -70,16 +70,31 @@ void searchAndUpdateRecord(const std::string& filename, const std::string& searc
     std::vector<Student> students;
     std::ifstream file(filename);
 
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << filename << std::endl;
+        return;
+    }
     // Чтение всех студентов из файла в вектор
     Student student;
     while (file >> student.lastName >> student.firstName >> student.patronymic) {
         for (int i = 0; i < max_record; ++i) {
             Subject subject;
+            if(!(file >> subject.name >>subject.grade)){
+                std::cerr << "Error reading from file: " << filename << std::endl;
+                file.close();
+                return;
+            }
             file >> subject.name >> subject.grade;
             student.subjects.push_back(subject);
         }
         students.push_back(student);
         student.subjects.clear();
+    }
+
+    if (file.fail() && !file.eof()) {
+        std::cerr << "Error reading from file: " << filename << std::endl;
+        file.close();
+        return;
     }
 
     file.close();
