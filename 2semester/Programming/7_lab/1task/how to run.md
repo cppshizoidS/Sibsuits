@@ -11,6 +11,6 @@ mv 1.cpp main.cpp
 mkdir build
 cd build
 cmake .. -G=Ninja
-ninja -j($nproc)
+ninja -j$(nproc)
 ./1_task
 ```
