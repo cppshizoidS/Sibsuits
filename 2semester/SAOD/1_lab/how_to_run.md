@@ -6,7 +6,7 @@ cmake, ninja(recommended), clang/gcc, clang-format
 mkdir build
 cd build
 cmake .. -G=Ninja
-ninja -j($nproc)
+ninja -j$(nproc)
 ./1_lab
 ```
 # Clang-format
