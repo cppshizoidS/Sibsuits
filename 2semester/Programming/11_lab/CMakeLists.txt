@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(1_task)
+project(11_lab)
 
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
