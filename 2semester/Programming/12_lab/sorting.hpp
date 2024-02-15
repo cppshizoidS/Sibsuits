@@ -1,10 +1,8 @@
-#ifndef SORTING_HPP
-#define SORTING_HPP
-
 #include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include <random>
 
 namespace Sorting {
 
@@ -30,6 +28,9 @@ template <typename T> void selectionSort(std::vector<T> &arr) {
     for (int j = i + 1; j < n; ++j)
       if (arr[j] < arr[minIndex])
         minIndex = j;
+
+    if (minIndex != i)
+      std::swap(arr[i], arr[minIndex]);
   }
 }
 
@@ -38,9 +39,10 @@ template <typename T> void insertionSort(std::vector<T> &arr) {
   for (int i = 1; i < n; ++i) {
     T key = arr[i];
     int j = i - 1;
-    while (j >= 0 && arr[j] > key)
+    while (j >= 0 && arr[j] > key) {
       arr[j + 1] = arr[j];
-    --j;
+      --j;
+    }
 
     arr[j + 1] = key;
   }
@@ -48,21 +50,30 @@ template <typename T> void insertionSort(std::vector<T> &arr) {
 
 template <typename T>
 void measureTime(std::vector<T> &arr, void (*sortFunction)(std::vector<T> &),
-                 const std::string &sortName) {
+                 const std::string &sortName, int n) {
+
+  // Generate a random array with n elements
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_int_distribution<T> dis(1, 1000);
+
+  arr.resize(n);
+  for (int i = 0; i < n; ++i)
+    arr[i] = dis(gen);
 
   auto start = std::chrono::high_resolution_clock::now();
   sortFunction(arr);
   auto end = std::chrono::high_resolution_clock::now();
 
   auto duration =
-      std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+      std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
   std::cout << "Sorted array using: " << sortName << ":\n";
-  printArray(arr);
-  std::cout << "Time taken by: " << sortName << ":" << duration.count()
-            << "microseconds\n\n";
+  if (n <= 20)
+    printArray(arr);
+
+  std::cout << "Time taken by " << sortName << " for " << n
+            << " elements: " << duration.count() << " milliseconds\n\n";
 }
 
-} // namespace Sorting
-
-#endif // !SORTING_HPP
+}
