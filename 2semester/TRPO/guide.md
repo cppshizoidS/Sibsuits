@@ -408,8 +408,8 @@ clang-format -i *.cpp #если форматируете руками, не в �
 ```
 |---src
 |    \
-|		CMakeLists.txt
-|		 main.cpp
+|     CMakeLists.txt
+|      main.cpp
 |---mystaticlib
 |	\
 |	 CMakeLists.txt
