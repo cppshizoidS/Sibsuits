@@ -117,7 +117,16 @@ void searchAndUpdateRecord(const std::string& filename, const std::string& searc
     }
 
     file.close();
-
+    /**
+    * @brief Поиск студента по фамилии и обновление его данных.
+    *
+    * Ищет студента в векторе по фамилии. Если студент найден, запрашивает у пользователя
+    * новые данные (фамилию, имя, отчество и оценки по предметам) и обновляет запись о студенте.
+    *
+    * @param students Вектор студентов.
+    * @param searchLastName Фамилия для поиска и обновления.
+    * @return True, если студент найден и обновлен, иначе False.
+    */
     bool found = false;
     for (auto& student : students) {
         if (student.lastName == searchLastName) {
@@ -148,6 +157,15 @@ void searchAndUpdateRecord(const std::string& filename, const std::string& searc
     }
 
     // Запись обновленных записей обратно в файл
+    /**
+    * @brief Записывает обновленные данные о студентах обратно в файл.
+    *
+    * Открывает файл для записи и записывает обновленные данные о студентах в него.
+    * Каждая строка файла представляет одного студента с его фамилией, именем, отчеством и оценками по предметам.
+    *
+    * @param filename Имя файла для сохранения обновленных данных.
+    * @param students Вектор студентов с обновленными данными.
+    */
     std::ofstream updatedFile(filename);
     for (const auto& student : students) {
         updatedFile << student.lastName << ' ' << student.firstName << ' ' << student.patronymic << ' ';
@@ -172,7 +190,16 @@ void deleteRecord(const std::string& filename, const std::string& deleteLastName
         records.push_back(line);
     }
     file.close();
-
+    /**
+    * @brief Удаляет записи о студентах с указанной фамилией из вектора записей.
+    *
+    * Использует алгоритм std::remove_if для фильтрации записей с заданной фамилией.
+    * Записи с указанной фамилией будут перемещены в конец вектора, а затем удалены.
+    *
+    * @param records Вектор записей студентов.
+    * @param deleteLastName Фамилия для удаления.
+    * @return Итератор на новый конец вектора после удаления записей.
+    */
     auto it = std::remove_if(records.begin(), records.end(), [deleteLastName](const std::string& record) {
         std::string lastName = record.substr(0, record.find(' '));
         return lastName == deleteLastName;
