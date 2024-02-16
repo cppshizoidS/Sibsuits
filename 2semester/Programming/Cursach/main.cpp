@@ -4,11 +4,16 @@
 #include <vector>
 #include <algorithm>
 
+/**
+ * @brief Структура, представляющая предмет и оценку студента.
+ */
 struct Subject {
     std::string name;
     int grade;
 };
-
+/**
+ * @brief Структура, представляющая данные о студенте.
+ */
 struct Student {
     std::string lastName;
     std::string firstName;
@@ -22,7 +27,11 @@ void createFile(const std::string& filename) {
     file.close();
 }
 
-// Функция для добавления новой записи в файл
+/**
+ * @brief Добавляет новую запись о студенте в файл.
+ * @param filename Имя файла.
+ * @param student Студент для добавления.
+ */
 void addRecord(const std::string& filename, const Student& student) {
     std::ofstream file(filename, std::ios::app);
     file << student.lastName << ' ' << student.firstName << ' ' << student.patronymic << ' ';
@@ -33,7 +42,10 @@ void addRecord(const std::string& filename, const Student& student) {
     file.close();
 }
 
-// Функция для создания индексных файлов для сортировки
+/**
+ * @brief Создает индексные файлы для сортировки.
+ * @param filename Имя файла.
+ */
 void createIndexFiles(const std::string& filename) {
     // Считывание всех записей из файла в вектор
     std::vector<std::string> records;
@@ -55,7 +67,10 @@ void createIndexFiles(const std::string& filename) {
     sortedFile.close();
 }
 
-// Функция для вывода содержимого файла
+/**
+ * @brief Выводит содержимое файла в консоль.
+ * @param filename Имя файла.
+ */
 void viewFile(const std::string& filename) {
     std::ifstream file(filename);
     std::string line;
@@ -65,7 +80,11 @@ void viewFile(const std::string& filename) {
     file.close();
 }
 const int max_record = 4;
-// Функция для поиска и обновления записи
+/**
+ * @brief Поиск и обновление записи о студенте по фамилии.
+ * @param filename Имя файла.
+ * @param searchLastName Фамилия для поиска и обновления.
+ */
 void searchAndUpdateRecord(const std::string& filename, const std::string& searchLastName) {
     std::vector<Student> students;
     std::ifstream file(filename);
@@ -140,7 +159,11 @@ void searchAndUpdateRecord(const std::string& filename, const std::string& searc
     updatedFile.close();
 }
 
-// Функция для удаления записи по фамилии
+/**
+ * @brief Удаляет запись о студенте по фамилии.
+ * @param filename Имя файла.
+ * @param deleteLastName Фамилия для удаления.
+ */
 void deleteRecord(const std::string& filename, const std::string& deleteLastName) {
     std::vector<std::string> records;
     std::ifstream file(filename);

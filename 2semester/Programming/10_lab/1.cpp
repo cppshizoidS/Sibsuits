@@ -4,6 +4,12 @@
 #include <string>
 #include <vector>
 
+/**
+ * @brief Сравнивает две строки без учета регистра символов.
+ * @param a Первая строка для сравнения.
+ * @param b Вторая строка для сравнения.
+ * @return true, если первая строка меньше второй без учета регистра, иначе false.
+ */
 bool caseInsensitiveCompare(const std::string &a, const std::string &b) {
   return std::lexicographical_compare(
       a.begin(), a.end(), b.begin(), b.end(),

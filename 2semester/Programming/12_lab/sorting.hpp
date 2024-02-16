@@ -5,14 +5,22 @@
 #include <random>
 
 namespace Sorting {
-
+/**
+ * @brief Вывод элементов массива в консоль.
+ * @tparam T Тип элементов массива.
+ * @param arr Массив для вывода.
+ */
 template <typename T> void printArray(const std::vector<T> &arr) {
   for (const auto &elem : arr) {
     std::cout << elem << " ";
   }
   std::cout << std::endl;
 }
-
+/**
+ * @brief Сортировка массива методом пузырька.
+ * @tparam T Тип элементов массива.
+ * @param arr Массив для сортировки.
+ */
 template <typename T> void bubbleSort(std::vector<T> &arr) {
   int n = arr.size();
   for (int i = 0; i < n - 1; ++i)
@@ -20,7 +28,11 @@ template <typename T> void bubbleSort(std::vector<T> &arr) {
       if (arr[j] > arr[j + 1])
         std::swap(arr[j], arr[j + 1]);
 }
-
+/**
+ * @brief Сортировка массива методом выбора.
+ * @tparam T Тип элементов массива.
+ * @param arr Массив для сортировки.
+ */
 template <typename T> void selectionSort(std::vector<T> &arr) {
   int n = arr.size();
   for (int i = 0; i < n - 1; ++i) {
@@ -33,7 +45,11 @@ template <typename T> void selectionSort(std::vector<T> &arr) {
       std::swap(arr[i], arr[minIndex]);
   }
 }
-
+/**
+ * @brief Сортировка массива методом вставки.
+ * @tparam T Тип элементов массива.
+ * @param arr Массив для сортировки.
+ */
 template <typename T> void insertionSort(std::vector<T> &arr) {
   int n = arr.size();
   for (int i = 1; i < n; ++i) {
@@ -47,7 +63,14 @@ template <typename T> void insertionSort(std::vector<T> &arr) {
     arr[j + 1] = key;
   }
 }
-
+/**
+ * @brief Измерение времени выполнения сортировки и вывод результатов.
+ * @tparam T Тип элементов массива.
+ * @param arr Массив для сортировки.
+ * @param sortFunction Функция сортировки.
+ * @param sortName Название метода сортировки.
+ * @param n Размер массива.
+ */
 template <typename T>
 void measureTime(std::vector<T> &arr, void (*sortFunction)(std::vector<T> &),
                  const std::string &sortName, int n) {

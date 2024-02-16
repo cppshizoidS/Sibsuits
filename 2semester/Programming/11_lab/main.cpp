@@ -3,12 +3,20 @@
 #include <iostream>
 #include <vector>
 
+/**
+ * @brief Структура, представляющая информацию о пассажире.
+ */
 struct Passenger {
-  std::string fullName;
-  int numberOfSeats;
-  double totalWeight;
+  std::string fullName; ///< ФИО пассажира.
+  int numberOfSeats;    ///< Количество мест.
+  double totalWeight;   ///< Общий вес вещей пассажира.
 
-  // Перегруженный оператор для вывода информации о пассажире
+  /**
+   * @brief Перегруженный оператор для вывода информации о пассажире.
+   * @param os Поток вывода.
+   * @param passenger Пассажир для вывода.
+   * @return Поток вывода.
+   */
   friend std::ostream &operator<<(std::ostream &os,
                                   const Passenger &passenger) {
     os << passenger.fullName << " " << passenger.numberOfSeats << " "
@@ -17,7 +25,11 @@ struct Passenger {
   }
 };
 
-// Функция для создания файла из N записей
+/**
+ * @brief Функция для создания файла из N записей.
+ * @param filename Имя файла.
+ * @param passengers Вектор пассажиров.
+ */
 void createFile(const std::string &filename,
                 const std::vector<Passenger> &passengers) {
   std::ofstream file(filename);
@@ -32,7 +44,10 @@ void createFile(const std::string &filename,
   }
 }
 
-// Функция для просмотра файла
+/**
+ * @brief Функция для просмотра содержимого файла.
+ * @param filename Имя файла.
+ */
 void viewFile(const std::string &filename) {
   std::ifstream file(filename);
   if (file.is_open()) {
@@ -46,7 +61,11 @@ void viewFile(const std::string &filename) {
   }
 }
 
-// Функция для добавления новой записи в конец файла
+/**
+ * @brief Функция для добавления новой записи в конец файла.
+ * @param filename Имя файла.
+ * @param newPassenger Новый пассажир.
+ */
 void addRecord(const std::string &filename, const Passenger &newPassenger) {
   std::ofstream file(filename, std::ios::app);
   if (file.is_open()) {
@@ -58,7 +77,11 @@ void addRecord(const std::string &filename, const Passenger &newPassenger) {
   }
 }
 
-// Функция для удаления записей с весом вещей менее 10 кг
+/**
+ * @brief Функция для удаления записей с весом вещей менее указанного порога.
+ * @param filename Имя файла.
+ * @param thresholdWeight Пороговый вес для удаления записей.
+ */
 void deleteRecords(const std::string &filename, double thresholdWeight) {
   std::ifstream inFile(filename);
   if (!inFile.is_open()) {
@@ -91,7 +114,12 @@ void deleteRecords(const std::string &filename, double thresholdWeight) {
             << " кг успешно удалены.\n";
 }
 
-// Функция для изменения веса вещей по заданной фамилии
+/**
+ * @brief Функция для изменения веса вещей пассажира по заданной фамилии.
+ * @param filename Имя файла.
+ * @param lastName Фамилия пассажира для изменения веса.
+ * @param newWeight Новый вес вещей.
+ */
 void modifyWeight(const std::string &filename, const std::string &lastName,
                   double newWeight) {
   std::ifstream inFile(filename);
@@ -126,6 +154,10 @@ void modifyWeight(const std::string &filename, const std::string &lastName,
             << " успешно изменен.\n";
 }
 
+/**
+ * @brief Основная функция программы.
+ * @return 0 при успешном завершении программы.
+ */
 int main() {
   const std::string filename = "passengers.txt";
 
