@@ -16,6 +16,14 @@ bool caseInsensitiveCompare(const std::string &a, const std::string &b) {
       [](char a, char b) { return tolower(a) < tolower(b); });
 }
 
+/**
+ * @brief Основная функция программы.
+ * 
+ * Читает строки из файла, разбивает их на слова, сортирует слова и записывает
+ * отсортированный список в другой файл.
+ * 
+ * @return 0 в случае успешного выполнения, 1 в случае ошибки.
+ */
 int main() {
   // Чтение строк из файла
   std::ifstream inputFile("input.txt");
@@ -39,7 +47,7 @@ int main() {
 
     while (end != std::string::npos) {
       std::string word = line.substr(start, end - start);
-      if (!word.empty()) { // добавить условие, чтобы исключить пустые слова
+      if (!word.empty()) { //  условие, чтобы исключить пустые слова
         words.push_back(word);
       }
       start = end + 1;
