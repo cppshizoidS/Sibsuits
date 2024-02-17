@@ -1,8 +1,9 @@
 #include <algorithm>
 #include <chrono>
+#include <functional>
 #include <iostream>
-#include <vector>
 #include <random>
+#include <vector>
 
 namespace Sorting {
 /**
@@ -71,8 +72,8 @@ template <typename T> void insertionSort(std::vector<T> &arr) {
  * @param sortName Название метода сортировки.
  * @param n Размер массива.
  */
-template <typename T>
-void measureTime(std::vector<T> &arr, void (*sortFunction)(std::vector<T> &),
+template <typename T, typename Callable>
+void measureTime(std::vector<T> &arr, Callable sortFunction,
                  const std::string &sortName, int n) {
 
   // Generate a random array with n elements
@@ -85,7 +86,7 @@ void measureTime(std::vector<T> &arr, void (*sortFunction)(std::vector<T> &),
     arr[i] = dis(gen);
 
   auto start = std::chrono::high_resolution_clock::now();
-  sortFunction(arr);
+  std::invoke(sortFunction, std::ref(arr));
   auto end = std::chrono::high_resolution_clock::now();
 
   auto duration =
@@ -99,4 +100,4 @@ void measureTime(std::vector<T> &arr, void (*sortFunction)(std::vector<T> &),
             << " elements: " << duration.count() << " milliseconds\n\n";
 }
 
-}
+} // namespace Sorting

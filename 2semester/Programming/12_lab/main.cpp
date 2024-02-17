@@ -6,7 +6,14 @@ auto main() -> int {
 
   int arraySize = 10000;
 
-  Sorting::measureTime(myArray, Sorting::bubbleSort, "bubble sort", arraySize);
-  Sorting::measureTime(myArray, Sorting::selectionSort, "selection sort", arraySize);
-  Sorting::measureTime(myArray, Sorting::insertionSort, "insertion sort", arraySize);
+  Sorting::measureTime(
+      myArray, [](std::vector<int> &arr) { Sorting::bubbleSort(arr); },
+      "Bubble sort", arraySize);
+  Sorting::measureTime(
+      myArray, [](std::vector<int> &arr) { Sorting::selectionSort(arr); },
+      "Selection sort", arraySize);
+  Sorting::measureTime(
+      myArray, [](std::vector<int> &arr) { Sorting::insertionSort(arr); },
+      "Insertion sort", arraySize);
+
 }
