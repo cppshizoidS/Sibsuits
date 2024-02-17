@@ -1,3 +1,6 @@
+#ifndef SORTING_HPP
+#define SORTING_HPP
+
 #include <algorithm>
 #include <chrono>
 #include <functional>
@@ -101,3 +104,4 @@ void measureTime(std::vector<T> &arr, Callable sortFunction,
 }
 
 } // namespace Sorting
+#endif // SORTING_HPP
