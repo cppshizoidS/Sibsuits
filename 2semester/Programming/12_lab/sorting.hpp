@@ -6,6 +6,7 @@
 #include <functional>
 #include <iostream>
 #include <random>
+#include <type_traits>
 #include <vector>
 
 namespace Sorting {
@@ -25,7 +26,10 @@ template <typename T> void printArray(const std::vector<T> &arr) {
  * @tparam T Тип элементов массива.
  * @param arr Массив для сортировки.
  */
-template <typename T> void bubbleSort(std::vector<T> &arr) {
+template <typename T>
+void bubbleSort(std::vector<T> &arr)
+  requires std::is_swappable_v<T>
+{
   int n = arr.size();
   for (int i = 0; i < n - 1; ++i)
     for (int j = 0; j < n - i - 1; ++j)
@@ -37,7 +41,10 @@ template <typename T> void bubbleSort(std::vector<T> &arr) {
  * @tparam T Тип элементов массива.
  * @param arr Массив для сортировки.
  */
-template <typename T> void selectionSort(std::vector<T> &arr) {
+template <typename T>
+void selectionSort(std::vector<T> &arr)
+  requires std::is_swappable_v<T>
+{
   int n = arr.size();
   for (int i = 0; i < n - 1; ++i) {
     int minIndex = i;
