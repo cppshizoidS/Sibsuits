@@ -8,9 +8,9 @@
 int main() {
   std::ios::sync_with_stdio(false);
 
-   std::cout << "| Size array |        Theoretical bubble        |            Theoretical shaker            |           M + C bubble           |           M + C shaker             |           M + C Select         |"<< std::endl;
-   std::cout << "|            | decreasing | middle | increasing | decreasing | middle max | increasing max | decreasing | random | increasing | decreasing   | random | increasing | decreasing | random| increasing|" << std::endl;
-   std::cout << "|------------|------------|--------|------------|------------|------------|----------------|------------|--------|------------|--------------|--------|------------|------------|-------|-----------|" << std::endl;
+   std::cout << "| Size array |        Theoretical bubble        |            Theoretical select            |           M + C bubble           |           M + C Select         |"<< std::endl;
+   std::cout << "|            | decreasing | middle | increasing | decreasing | middle max | increasing max | decreasing | random | increasing | decreasing | random| increasing|" << std::endl;
+   std::cout << "|------------|------------|--------|------------|------------|------------|----------------|------------|--------|------------|------------|-------|-----------|" << std::endl;
 
   for (size_t len_arr = 100; len_arr <= 500; len_arr += 100) {
     std::vector<int> Amin(len_arr);
@@ -38,14 +38,6 @@ int main() {
     std::cout << "| " << std::setw(11) << BubbleSort(Amin);
     std::cout << "| " << std::setw(7) << BubbleSort(Arand);
     std::cout << "| " << std::setw(11) << BubbleSort(Amax);
-
-    FillDec(Amin, len_arr);
-    FillInc(Amax, len_arr);
-    FillRand(Arand, len_arr);
-
-    std::cout << "| " << std::setw(13) << ShakerSort(Amin);
-    std::cout << "| " << std::setw(7) << ShakerSort(Arand);
-    std::cout << "| " << std::setw(11) << ShakerSort(Amax);
 
     FillDec(Amin, len_arr);
     FillInc(Amax, len_arr);

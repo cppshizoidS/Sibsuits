@@ -70,37 +70,5 @@ template <typename T> size_t BubbleSort(T &A) {
   // PrintArr(A, m, c);
   return m + c;
 }
-/**
- * @brief Perform shaker sort (or cocktail sort) on the array.
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t ShakerSort(T &A) {
-  size_t L = 0, R = A.size() - 1, k = A.size() - 1;
-  size_t m = 0, c = 0;
-  do {
-    for (size_t j = R; j > L; j--) {
-      if (A[j] < A[j - 1]) {
-        Swap(A[j], A[j - 1]);
-        m += 3;
-        k = j;
-      }
-      c++;
-    }
-    L = k;
-    for (size_t j = L; j < R; j++) {
-      if (A[j] > A[j + 1]) {
-        Swap(A[j], A[j + 1]);
-        m += 3;
-        k = j;
-      }
-      c++;
-    }
-    R = k;
-  } while (L < R);
-  // PrintArr(A, m, c);
-  return m + c;
-}
 
 #endif // SORTS_HPP
