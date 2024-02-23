@@ -1,10 +1,12 @@
 /**
  * @file main.cpp
- * @brief Сортировка и отображение информации о школах на основе процента абитуриентов от числа выпускников.
+ * @brief Сортировка и отображение информации о школах на основе процента
+ * абитуриентов от числа выпускников.
  */
 
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 #include <vector>
 
 /**
@@ -12,54 +14,55 @@
  * @brief Структура для представления информации о школе.
  */
 struct SchoolInfo {
-    int schoolNumber;            ///< Номер школы.
-    int graduatesCount;          ///< Количество выпускников школы.
-    int universityEntrantsCount; ///< Количество абитуриентов, поступивших в университет.
+  int schoolNumber; ///< Номер школы.
+  int graduateCount; ///< Количество выпускников школы.
+  int universityEntrantsCount; ///< Количество абитуриентов, поступивших в университет.
 };
 
 /**
- * @brief Основная функция для демонстрации сортировки и отображения информации о школах.
- * @return 0 при успешном выполнении.
+ * @brief Основная функция для выполнения сортировки и вывода информации о школах.
+ * @return Целое число, указывающее на успешное выполнение программы.
  */
-int main() {
-    // Пример данных, представляющих информацию о разных школах.
-    std::vector<SchoolInfo> schools = {{1, 100, 10}, {2, 120, 90}, {3, 80, 60}};
+auto main() -> int {
+  // Пример данных, представляющих информацию о различных школах.
+  std::vector<SchoolInfo> schools = {{1, 100, 10}, {2, 120, 90}, {3, 80, 60}};
 
-    /**
-     * @brief Сравнивает школы на основе процента абитуриентов от числа выпускников.
-     *
-     * Лямбда-выражение, переданное в функцию std::sort, определяет критерий
-     * сортировки. Школы сортируются в порядке убывания процента абитуриентов
-     * от числа выпускников.
-     *
-     * @param a Первая школа для сравнения.
-     * @param b Вторая школа для сравнения.
-     * @return true, если процент абитуриентов от числа выпускников в школе a больше,
-     *         чем в школе b, иначе false.
-     */
-    auto compareSchools = [](const SchoolInfo &a, const SchoolInfo &b) {
-        return (static_cast<float>(a.universityEntrantsCount) / a.graduatesCount) >
-               (static_cast<float>(b.universityEntrantsCount) / b.graduatesCount);
-    };
+  // Создание вектора индексов и заполнение его последовательными значениями.
+  std::vector<size_t> indices(schools.size());
+  std::iota(indices.begin(), indices.end(), 0);
 
-    // Сортировка школ на основе процента абитуриентов от числа выпускников.
-    std::sort(schools.begin(), schools.end(), compareSchools);
+  /**
+   * @brief Лямбда-функция для сравнения школ на основе процента абитуриентов
+   * от числа выпускников.
+   * @param a Индекс первой школы.
+   * @param b Индекс второй школы.
+   * @return True, если у первой школы выше процент, в противном случае - false.
+   */
+  auto compareSchools = [&schools](size_t a, size_t b) {
+    return (static_cast<float>(schools[a].universityEntrantsCount) /
+            schools[a].graduateCount) >
+           (static_cast<float>(schools[b].universityEntrantsCount) /
+            schools[b].graduateCount);
+  };
 
-    // Отображение информации о каждой школе после сортировки.
-    std::cout << "Информация о школах: " << std::endl;
-    for (const auto &school : schools) {
-        // Вычисление процента абитуриентов от числа выпускников.
-        float entrancePercentage =
-            (static_cast<float>(school.universityEntrantsCount) /
-             school.graduatesCount) * 100;
+  // Сортировка индексов на основе функции сравнения.
+  std::sort(indices.begin(), indices.end(), compareSchools);
 
-        // Вывод информации о школе.
-        std::cout << "Школа" << school.schoolNumber << ": Выпускники - "
-                  << school.graduatesCount << ", Число абитуриентов - "
-                  << school.universityEntrantsCount
-                  << ", Процент поступивших в университет " << entrancePercentage << "%"
-                  << std::endl;
-    }
+  // Отображение информации о каждой школе после сортировки.
+  std::cout << "Информация о школах:" << std::endl;
+  for (const auto &index : indices) {
+    // Вычисление процента абитуриентов от числа выпускников.
+    float entrancePercentage =
+        (static_cast<float>(schools[index].universityEntrantsCount) /
+        schools[index].graduateCount) * 100;
 
-    return 0;
+    // Вывод информации о школе.
+    std::cout << "Школа" << schools[index].schoolNumber << ": Выпускники - "
+              << schools[index].graduateCount << ", Абитуриенты - "
+              << schools[index].universityEntrantsCount
+              << ", Процент поступивших в университет " << entrancePercentage
+              << "%" << std::endl;
+  }
+
+  return 0;
 }
