@@ -1,3 +1,6 @@
 [submodule "2semester/TRPO/2semester/TRPO/labs-krivoschekov-ip314s28"]
 	path = 2semester/TRPO/2semester/TRPO/labs-krivoschekov-ip314s28
 	url = https://git.csc.sibsutis.ru/trpo2024/labs-krivoschekov-ip314s28
+[submodule "2semester/TRPO/labs-krivoschekov-ip314s28"]
+	path = 2semester/TRPO/labs-krivoschekov-ip314s28
+	url = https://git.csc.sibsutis.ru/trpo2024/labs-krivoschekov-ip314s28.git
