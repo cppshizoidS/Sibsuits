@@ -18,7 +18,7 @@ struct Student {
     QString firstName;          ///< Имя студента.
     QString patronymic;         ///< Отчество студента.
     QVector<Subject> subjects;  //< Вектор с информацией о предметах студента.
-    QString toString() const;
+    [[nodiscard]] QString toString() const;
 };
 
 #endif // STUDENT_HPP
