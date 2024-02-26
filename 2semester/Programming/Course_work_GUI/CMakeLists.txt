@@ -7,7 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_PREFIX_PATH "/home/cppshizoid/Documents/Sibsutis/SibsutisLabs/2semester/Programming/Course_work_refactor")
+set(CMAKE_PREFIX_PATH "/home/cppshizoid/Documents/Sibsutis/SibsutisLabs/2semester/Programming/Course_work_GUi")
 
 find_package(Qt6 COMPONENTS
         Core
