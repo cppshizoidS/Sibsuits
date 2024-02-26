@@ -244,7 +244,7 @@ int main() {
             case 1:
                 createFile(filename);
                 break;
-            case 2: 
+            case 2:
             {
                 Student newStudent;
                 std::cout << "Введите фамилию, имя, отчество: ";
@@ -259,7 +259,7 @@ int main() {
 
                 addRecord(filename, newStudent);
             }                break;
-            
+
             case 3:
                 createIndexFiles(filename);
                 break;
@@ -291,4 +291,3 @@ int main() {
 
     return 0;
 }
-
