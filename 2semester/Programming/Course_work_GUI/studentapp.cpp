@@ -148,7 +148,7 @@ void StudentApp::viewFile() {
         QString fileContent = in.readAll();
         file.close();
 
-        QTextEdit *outputText = findChild<QTextEdit *>();
+        auto *outputText = findChild<QTextEdit *>();
         if (outputText) {
             outputText->setText(fileContent);
         }
@@ -181,8 +181,8 @@ void StudentApp::searchAndUpdateRecord() {
             file.close();
 
             bool found = false;
-            for (int i = 0; i < records.size(); ++i) {
-                QStringList parts = records[i].split(' ', Qt::SkipEmptyParts);
+            for (auto & record : records) {
+                QStringList parts = record.split(' ', Qt::SkipEmptyParts);
                 if (!parts.isEmpty() && parts[0] == searchLastName) {
                     found = true;
 
@@ -214,7 +214,7 @@ void StudentApp::searchAndUpdateRecord() {
                             subject.name = updatedName;
                             subject.grade = updatedGrade;
                         }
-                        records[i] = updatedStudent.toString();
+                        record = updatedStudent.toString();
                         break;
                     }
                 }
@@ -318,39 +318,39 @@ void StudentApp::addRecordToFile(const Student &student) {
  * кнопки и виджеты для взаимодействия с пользователем.
  */
 void StudentApp::setupUi() {
-    QWidget *centralWidget = new QWidget(this);
+    auto *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    QVBoxLayout *layout = new QVBoxLayout(centralWidget);
+    auto *layout = new QVBoxLayout(centralWidget);
 
-    QLabel *titleLabel = new QLabel("Student Records Management", this);
+    auto *titleLabel = new QLabel("Student Records Management", this);
     titleLabel->setAlignment(Qt::AlignCenter);
     layout->addWidget(titleLabel);
 
-    QPushButton *createFileButton = new QPushButton("Create File", this);
+    auto *createFileButton = new QPushButton("Create File", this);
     connect(createFileButton, &QPushButton::clicked, this, &StudentApp::createFile);
     layout->addWidget(createFileButton);
 
-    QPushButton *addRecordButton = new QPushButton("Add Record", this);
+    auto *addRecordButton = new QPushButton("Add Record", this);
     connect(addRecordButton, &QPushButton::clicked, this, &StudentApp::addRecord);
     layout->addWidget(addRecordButton);
 
-    QPushButton *createIndexFilesButton = new QPushButton("Create Index Files", this);
+    auto *createIndexFilesButton = new QPushButton("Create Index Files", this);
     connect(createIndexFilesButton, &QPushButton::clicked, this, &StudentApp::createIndexFiles);
     layout->addWidget(createIndexFilesButton);
 
-    QPushButton *viewFileButton = new QPushButton("View File", this);
+    auto *viewFileButton = new QPushButton("View File", this);
     connect(viewFileButton, &QPushButton::clicked, this, &StudentApp::viewFile);
     layout->addWidget(viewFileButton);
 
-    QPushButton *searchAndUpdateButton = new QPushButton("Search and Update Record", this);
+    auto *searchAndUpdateButton = new QPushButton("Search and Update Record", this);
     connect(searchAndUpdateButton, &QPushButton::clicked, this, &StudentApp::searchAndUpdateRecord);
     layout->addWidget(searchAndUpdateButton);
 
-    QPushButton *deleteRecordButton = new QPushButton("Delete Record", this);
+    auto *deleteRecordButton = new QPushButton("Delete Record", this);
     connect(deleteRecordButton, &QPushButton::clicked, this, &StudentApp::deleteRecord);
     layout->addWidget(deleteRecordButton);
 
-    QTextEdit *outputText = new QTextEdit(this);
+    auto *outputText = new QTextEdit(this);
     layout->addWidget(outputText);
 }
