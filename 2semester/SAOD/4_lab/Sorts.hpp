@@ -53,7 +53,7 @@ template <typename T> size_t SelectSort(T &A) {
 /**
  * 2 lab
  * @brief Perform bubble sort on the array.
- * @tparam T Type of the array elements.
+ * @param T Type of the array elements.
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
@@ -113,27 +113,24 @@ template <typename T> size_t ShakerSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T>
-std::pair<size_t, size_t> InsertionSort(T &A) {
-    size_t moves = 0, comparisons = 0;
-
-    for (size_t i = 1; i < A.size(); ++i) {
-        auto key = A[i];
-        int j = i - 1;
-
-        while (j >= 0 && A[j] > key) {
-            ++comparisons;
+template <typename T> size_t InsertionSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 1; i < len; i++) {
+        bool f = true;
+        auto t = A[i];
+        long long j = i - 1;
+        while (j > -1 and t < A[j]) {
+            f = false;
             A[j + 1] = A[j];
-            ++moves;
-            --j;
+            j--;
+            c++;
+            m++;
         }
-
-        A[j + 1] = key;
-        ++moves;
+        if (f)
+            c++;
+        A[j + 1] = t;
+        m += 2;
     }
-
-    return {moves, comparisons};
+    return m + c;
 }
-
-
 #endif // SORTS_HPP
