@@ -132,8 +132,9 @@ template <typename T> size_t InsertionSort(T &A, size_t len) {
   return m + c;
 }
 /**
+ * 5 lab
  * @brief Perform shell sort on the array
- * 
+ *
  * @tparam T Type of the array elements.
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
