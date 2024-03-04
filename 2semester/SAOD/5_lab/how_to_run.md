@@ -9,7 +9,7 @@ mkdir build
 cd build
 cmake .. -G=Ninja
 ninja -j$(nproc)
-./4_lab
+./5_lab
 ```
 
 # Clang-format
