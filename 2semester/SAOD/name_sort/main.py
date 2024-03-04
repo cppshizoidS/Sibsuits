@@ -1,3 +1,10 @@
+def print_sorted_step_with_swaps(word_list, swapped_indices, sort_name):
+    sorted_word = ''.join(word_list)
+    dots = ['.' if i in swapped_indices else ' ' for i in range(len(sorted_word))]
+    print(f'{sort_name}: {sorted_word}')
+    print(' ' * (len(sort_name) + 2) + ''.join(dots))
+
+
 def selection_sort(word):
     word_list = list(word)
     n = len(word_list)
@@ -9,7 +16,7 @@ def selection_sort(word):
                 min_index = j
 
         word_list[i], word_list[min_index] = word_list[min_index], word_list[i]
-        print('Selection Sort:', ''.join(word_list))
+        print_sorted_step_with_swaps(word_list, [i, min_index], 'Selection Sort')
 
     return ''.join(word_list)
 
@@ -25,7 +32,7 @@ def insertion_sort(word):
             j -= 1
 
         word_list[j + 1] = key
-        print('Insertion Sort:', ''.join(word_list))
+        print_sorted_step_with_swaps(word_list, [i, j + 1], 'Insertion Sort')
 
     return ''.join(word_list)
 
@@ -38,7 +45,7 @@ def bubble_sort(word):
         for j in range(0, n - i - 1):
             if word_list[j] > word_list[j + 1]:
                 word_list[j], word_list[j + 1] = word_list[j + 1], word_list[j]
-        print('Bubble Sort:', ''.join(word_list))
+                print_sorted_step_with_swaps(word_list, [j, j + 1], 'Bubble Sort')
 
     return ''.join(word_list)
 
@@ -58,8 +65,7 @@ def shaker_sort(word):
             if word_list[i] > word_list[i + 1]:
                 word_list[i], word_list[i + 1] = word_list[i + 1], word_list[i]
                 swapped = True
-
-        print('Shaker Sort:', ''.join(word_list))
+                print_sorted_step_with_swaps(word_list, [i, i + 1], 'Shaker Sort')
 
         if not swapped:
             break
@@ -72,8 +78,7 @@ def shaker_sort(word):
             if word_list[i] > word_list[i + 1]:
                 word_list[i], word_list[i + 1] = word_list[i + 1], word_list[i]
                 swapped = True
-
-        print('Shaker Sort:', ''.join(word_list))
+                print_sorted_step_with_swaps(word_list, [i, i + 1], 'Shaker Sort')
 
         start = start + 1
 
@@ -96,8 +101,7 @@ def shell_sort(word):
             word_list[j] = temp
 
             iteration += 1
-            print(f'Shell Sort (Iteration {iteration}, Gap = {
-                  gap}):', ''.join(word_list))
+            print_sorted_step_with_swaps(word_list, [j], f'Shell Sort (Iteration {iteration}, Gap = {gap})')
 
         gap //= 2
 
@@ -109,23 +113,23 @@ def main():
 
     # Selection Sort
     sorted_word_selection = selection_sort(word)
-    print("Word sorted alphabetically using Selection Sort:", sorted_word_selection)
+    print("\nWord sorted alphabetically using Selection Sort:", sorted_word_selection)
 
     # Insertion Sort
     sorted_word_insertion = insertion_sort(word)
-    print("Word sorted alphabetically using Insertion Sort:", sorted_word_insertion)
+    print("\nWord sorted alphabetically using Insertion Sort:", sorted_word_insertion)
 
     # Bubble Sort
     sorted_word_bubble = bubble_sort(word)
-    print("Word sorted alphabetically using Bubble Sort:", sorted_word_bubble)
+    print("\nWord sorted alphabetically using Bubble Sort:", sorted_word_bubble)
 
     # Shaker Sort
     sorted_word_shaker = shaker_sort(word)
-    print("Word sorted alphabetically using Shaker Sort:", sorted_word_shaker)
+    print("\nWord sorted alphabetically using Shaker Sort:", sorted_word_shaker)
 
     # Shell Sort
     sorted_word_shell = shell_sort(word)
-    print("Word sorted alphabetically using Shell Sort:", sorted_word_shell)
+    print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
 
 
 if __name__ == "__main__":
