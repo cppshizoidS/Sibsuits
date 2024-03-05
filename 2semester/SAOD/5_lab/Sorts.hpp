@@ -3,149 +3,113 @@
 
 #include "ArrFunc.hpp"
 
-#include <algorithm>
+#include <cmath>
 #include <cstddef>
 #include <iostream>
-/**
- * @brief Swap the values of two variables.
- * @tparam T Type of the variables.
- * @param x First variable.
- * @param y Second variable.
- */
+
+bool F = true;
+
 template <typename T> void Swap(T &x, T &y) {
-  T temp = x;
-  x = y;
-  y = temp;
+    int temp = x;
+    x = y;
+    y = temp;
 }
-/**
- * @brief Print the sorted array along with the number of moves and comparisons.
- * @tparam T Type of the array elements.
- * @param A The array to be printed.
- * @param m Number of moves performed during sorting.
- * @param c Number of comparisons performed during sorting.
- */
-template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
-  std::cout << "Sort array: ";
-  PrintMas(A);
-  std::cout << "Move: " << m << std::endl;
-  std::cout << "Compare: " << c << std::endl;
+
+template <typename T> void PrintArr(T &A, size_t len, size_t m, size_t c) {
+    std::cout << "Sort array: ";
+    PrintMas(A, len);
+    std::cout << "Move: " << m << std::endl;
+    std::cout << "Compare: " << c << std::endl;
 }
-/**
- * 1 lab
- * @brief Perform selection sort on the array.
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t SelectSort(T &A) {
-  size_t m = 0, c = 0;
-  size_t len = A.size();
-  for (size_t i = 0; i < len - 1; i++) {
-    auto minIndex = std::min_element(A.begin() + i, A.end()) - A.begin();
-    Swap(A[i], A[minIndex]);
-    m += 3;
-    c += len - i - 1;
-  }
-  // PrintArr(A, m, c);
-  return m + c;
-}
-/**
- * 2 lab
- * @brief Perform bubble sort on the array.
- * @param T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t BubbleSort(T &A) {
-  size_t m = 0, c = 0;
-  size_t len = A.size();
-  for (size_t i = 0; i < len; i++) {
-    for (size_t j = 1; j < len - i; j++) {
-      if (A[j] < A[j - 1]) {
-        Swap(A[j], A[j - 1]);
+
+template <typename T> size_t SelectSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 0; i < len - 1; i++) {
+        int snp = i;
+        for (size_t j = i + 1; j < len; j++) {
+            if (A[j] < A[snp])
+                snp = j;
+            c++;
+        }
+        Swap(A[i], A[snp]);
         m += 3;
-      }
-      c++;
     }
-  }
-  // PrintArr(A, m, c);
-  return m + c;
+    return m + c;
 }
-/**
- * 3 lab
- * @brief Perform shaker sort (or cocktail sort) on the array.
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t ShakerSort(T &A) {
-  size_t L = 0, R = A.size() - 1, k = A.size() - 1;
-  size_t m = 0, c = 0;
-  do {
-    for (size_t j = R; j > L; j--) {
-      if (A[j] < A[j - 1]) {
-        Swap(A[j], A[j - 1]);
-        m += 3;
-        k = j;
-      }
-      c++;
+
+template <typename T> size_t BubbleSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 0; i < len; i++) {
+        for (size_t j = 1; j < len - i; j++) {
+            if (A[j] < A[j - 1]) {
+                Swap(A[j], A[j - 1]);
+                m += 3;
+            }
+            c++;
+        }
     }
-    L = k;
-    for (size_t j = L; j < R; j++) {
-      if (A[j] > A[j + 1]) {
-        Swap(A[j], A[j + 1]);
-        m += 3;
-        k = j;
-      }
-      c++;
-    }
-    R = k;
-  } while (L < R);
-  // PrintArr(A, m, c);
-  return m + c;
+    return m + c;
 }
-/**
- * 4 lab
- * @brief Perform insertion sort on the array.
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t InsertionSort(T &A, size_t len) {
-  size_t m = 0, c = 0;
-  for (size_t i = 1; i < len; i++) {
-    bool f = true;
-    auto t = A[i];
-    long long j = i - 1;
-    while (j > -1 and t < A[j]) {
-      f = false;
-      A[j + 1] = A[j];
-      j--;
-      c++;
-      m++;
-    }
-    if (f)
-      c++;
-    A[j + 1] = t;
-    m += 2;
-  }
-  return m + c;
+
+template <typename T> size_t ShakerSort(T &A, size_t len) {
+    size_t L = 0, R = len - 1, k = len - 1;
+    size_t m = 0, c = 0;
+    do {
+        for (size_t j = R; j > L; j--) {
+            if (A[j] < A[j - 1]) {
+                Swap(A[j], A[j - 1]);
+                m += 3;
+                k = j;
+            }
+            c++;
+        }
+        L = k;
+        for (size_t j = L; j < R; j++) {
+            if (A[j] > A[j + 1]) {
+                Swap(A[j], A[j + 1]);
+                m += 3;
+                k = j;
+            }
+            c++;
+        }
+        R = k;
+    } while (L < R);
+    return m + c;
 }
-/**
- * 5 lab
- * @brief Perform shell sort on the array
- *
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
+
+template <typename T> size_t InsertSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 1; i < len; i++) {
+        bool f = true;
+        auto t = A[i];
+        long long j = i - 1;
+        while (j > -1 and t < A[j]) {
+            f = false;
+            A[j + 1] = A[j];
+            j--;
+            c++;
+            m++;
+        }
+        if (f)
+            c++;
+        A[j + 1] = t;
+        m += 2;
+    }
+    return m + c;
+}
+
 template <typename T> size_t ShellSort(T &A, size_t len) {
     size_t m = 0, c = 0;
-    for (int d = len / 2; d > 0; d /= 2) {
-        for (size_t i = d; i < len; i++) {
+    int M = static_cast<int>(std::log2(len)) - 1;
+    int h[M];
+    h[0] = 1;
+    for (int i = 1; i < M; i++)
+        h[i] = 2 * h[i - 1] + 1;
+    for (int a = M - 1; a >= 0; a--) {
+        for (size_t i = h[a]; i < len; i++) {
             bool f = true;
-            for (int j = i - d; j >= 0 && A[j] > A[j + d]; j -= d) {
-                Swap(A[j], A[j + d]);
+            for (int j = i - h[a]; j >= 0 and A[j] > A[j + h[a]]; j -= h[a]) {
+                Swap(A[j], A[j + h[a]]);
                 m += 3;
                 f = false;
                 c++;
@@ -154,6 +118,21 @@ template <typename T> size_t ShellSort(T &A, size_t len) {
                 c++;
         }
     }
+
+    if (F) {
+        printf("|%d ", M);
+        for (int i = 0; i < M; i++)
+            printf(" %d", h[i]);
+
+        if (M < 6)
+            printf("       ");
+        else if (M < 7)
+            printf("    ");
+
+        F = false;
+    }
+
     return m + c;
 }
-#endif
+
+#endif // SORTS_HPP

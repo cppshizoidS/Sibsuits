@@ -1,14 +1,15 @@
 #include "ArrFunc.hpp"
 #include "Sorts.hpp"
 
-#include <iomanip>
-#include <iostream>
+#include <cmath>
+#include <cstdio>
 #include <vector>
 
 int main() {
-    std::cout << "| Size array |        Theoretical shell         |           M + C shell            |\n";
-    std::cout << "|            | decreasing | middle | increasing | decreasing | random | increasing |\n";
-    std::cout << "|------------|------------|--------|------------|------------|--------|------------|\n";
+
+    printf("| Size array |        M and h      |           M + C shell            |           M + C insert           |\n");
+    printf("|            |                     | decreasing | random | increasing | decreasing | random | increasing |\n");
+    printf("|------------|---------------------|------------|--------|------------|------------|--------|------------|\n");
 
     for (size_t len_arr = 100; len_arr <= 500; len_arr += 100) {
         std::vector<int> Amin(len_arr);
@@ -19,19 +20,24 @@ int main() {
         FillInc(Amax, len_arr);
         FillRand(Arand, len_arr);
 
-        std::cout << "| " << std::setw(11) << len_arr;
-
-        std::cout << "| " << std::setw(11) << ((len_arr * len_arr - len_arr) + 2 * len_arr - 2);
-        std::cout << "| " << std::setw(7) << ((len_arr * len_arr - len_arr) + 5 * (len_arr - 1)) / 2;
-        std::cout << "| " << std::setw(11) << 3 * (len_arr - 1);
-
-        std::cout << "| " << std::setw(11) << ShellSort(Amin, len_arr);
-        std::cout << "| " << std::setw(7) << ShellSort(Arand, len_arr);
-        std::cout << "| " << std::setw(11) << ShellSort(Amax, len_arr) << "|\n";
+        printf("| %10lu ", len_arr);
+        printf("| %10lu ", ShellSort(Amin, len_arr));
+        printf("| %6lu ", ShellSort(Arand, len_arr));
+        printf("| %10lu ", ShellSort(Amax, len_arr));
 
         FillDec(Amin, len_arr);
         FillInc(Amax, len_arr);
         FillRand(Arand, len_arr);
+
+        printf("| %10lu ", InsertSort(Amin, len_arr));
+        printf("| %6lu ", InsertSort(Arand, len_arr));
+        printf("| %10lu |\n", InsertSort(Amax, len_arr));
+
+        FillDec(Amin, len_arr);
+        FillInc(Amax, len_arr);
+        FillRand(Arand, len_arr);
+
+        F = true;
     }
 
     return 0;

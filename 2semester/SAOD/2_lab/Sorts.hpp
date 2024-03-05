@@ -37,38 +37,33 @@ template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t SelectSort(T &A) {
-  size_t m = 0, c = 0;
-  size_t len = A.size();
-  for (size_t i = 0; i < len - 1; i++) {
-    auto minIndex = std::min_element(A.begin() + i, A.end()) - A.begin();
-    Swap(A[i], A[minIndex]);
-    m += 3;
-    c += len - i - 1;
-  }
-  // PrintArr(A, m, c);
-  return m + c;
-}
-/**
- * @brief Perform bubble sort on the array.
- * @tparam T Type of the array elements.
- * @param A The array to be sorted.
- * @return Total number of moves and comparisons during sorting.
- */
-template <typename T> size_t BubbleSort(T &A) {
-  size_t m = 0, c = 0;
-  size_t len = A.size();
-  for (size_t i = 0; i < len; i++) {
-    for (size_t j = 1; j < len - i; j++) {
-      if (A[j] < A[j - 1]) {
-        Swap(A[j], A[j - 1]);
+template <typename T> size_t SelectSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 0; i < len - 1; i++) {
+        int snp = i;
+        for (size_t j = i + 1; j < len; j++) {
+            if (A[j] < A[snp])
+                snp = j;
+            c++;
+        }
+        Swap(A[i], A[snp]);
         m += 3;
-      }
-      c++;
     }
-  }
-  // PrintArr(A, m, c);
-  return m + c;
+    return m + c;
+}
+
+template <typename T> size_t BubbleSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (size_t i = 0; i < len; i++) {
+        for (size_t j = 1; j < len - i; j++) {
+            if (A[j] < A[j - 1]) {
+                Swap(A[j], A[j - 1]);
+                m += 3;
+            }
+            c++;
+        }
+    }
+    return m + c;
 }
 
 #endif // SORTS_HPP

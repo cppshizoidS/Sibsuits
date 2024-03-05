@@ -35,17 +35,17 @@ int main() {
                      (len_arr * len_arr - len_arr) / 2 - 1;
     std::cout << "| " << std::setw(15) << (len_arr * len_arr - len_arr) / 2 - 1;
 
-    std::cout << "| " << std::setw(11) << BubbleSort(Amin);
-    std::cout << "| " << std::setw(7) << BubbleSort(Arand);
-    std::cout << "| " << std::setw(11) << BubbleSort(Amax);
+    std::cout << "| " << std::setw(11) << BubbleSort(Amin, len_arr);
+    std::cout << "| " << std::setw(7) << BubbleSort(Arand, len_arr);
+    std::cout << "| " << std::setw(11) << BubbleSort(Amax, len_arr);
 
     FillDec(Amin, len_arr);
     FillInc(Amax, len_arr);
     FillRand(Arand, len_arr);
 
-    std::cout << "| " << std::setw(11) << SelectSort(Amin);
-    std::cout << "| " << std::setw(6) << SelectSort(Arand);
-    std::cout << "| " << std::setw(9) << SelectSort(Amax) << " |" << std::endl;
+    std::cout << "| " << std::setw(11) << SelectSort(Amin, len_arr);
+    std::cout << "| " << std::setw(6) << SelectSort(Arand, len_arr);
+    std::cout << "| " << std::setw(9) << SelectSort(Amax, len_arr) << " |" << std::endl;
   }
 
   return 0;
