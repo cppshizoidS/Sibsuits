@@ -16,9 +16,9 @@
  * @param A The array to be filled.
  * @param len The length of the array.
  */
-template <typename T> void FillInc(T &A, size_t len) {
-  for (size_t i = 0; i < len; i++)
-    A[i] = i;
+template <typename T>
+void FillInc(T &A, size_t len) {
+  for (size_t i = 0; i < len; i++) A[i] = i;
 }
 
 /**
@@ -27,9 +27,9 @@ template <typename T> void FillInc(T &A, size_t len) {
  * @param A The array to be filled.
  * @param len The length of the array.
  */
-template <typename T> void FillDec(T &A, size_t len) {
-  for (size_t i = 1; i <= len; i++)
-    A[i - 1] = len - i;
+template <typename T>
+void FillDec(T &A, size_t len) {
+  for (size_t i = 1; i <= len; i++) A[i - 1] = len - i;
 }
 
 /**
@@ -38,13 +38,13 @@ template <typename T> void FillDec(T &A, size_t len) {
  * @param A The array to be filled.
  * @param len The length of the array.
  */
-template <typename T> void FillRand(T &A, size_t len) {
+template <typename T>
+void FillRand(T &A, size_t len) {
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(0, 99);
 
-  for (auto &element : A)
-    element = dis(gen);
+  for (auto &element : A) element = dis(gen);
 }
 
 /**
@@ -54,10 +54,10 @@ template <typename T> void FillRand(T &A, size_t len) {
  * @param len The length of the array.
  * @return The sum of the array elements.
  */
-template <typename T> int CheckSum(const T &A, size_t len) {
+template <typename T>
+int CheckSum(const T &A, size_t len) {
   int sum = 0;
-  for (const auto &element : A)
-    sum += element;
+  for (const auto &element : A) sum += element;
   return sum;
 }
 
@@ -69,12 +69,12 @@ template <typename T> int CheckSum(const T &A, size_t len) {
  * @param len The length of the array.
  * @return The number of runs in the array.
  */
-template <typename T> size_t RunNumber(const T &A, size_t len) {
+template <typename T>
+size_t RunNumber(const T &A, size_t len) {
   size_t n = 1;
   auto pred = A[0];
   for (const auto &element : A) {
-    if (element < pred)
-      n++;
+    if (element < pred) n++;
     pred = element;
   }
   return n;
@@ -86,11 +86,12 @@ template <typename T> size_t RunNumber(const T &A, size_t len) {
  * @param A The array to be printed.
  * @param len The length of the array.
  */
-template <typename T> void PrintMas(const T &A, size_t len) {
+template <typename T>
+void PrintMas(const T &A, size_t len) {
   for (const auto &element : A) {
     std::cout << element << " ";
   }
   std::cout << std::endl;
 }
 
-#endif // BASE_ARR_FUNCS_HPP
+#endif  // BASE_ARR_FUNCS_HPP

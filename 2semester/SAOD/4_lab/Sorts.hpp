@@ -1,11 +1,11 @@
 #ifndef SORTS_HPP
 #define SORTS_HPP
 
-#include "ArrFunc.hpp"
-
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+
+#include "ArrFunc.hpp"
 
 /**
  * @brief Swap the values of two variables.
@@ -13,7 +13,8 @@
  * @param x First variable.
  * @param y Second variable.
  */
-template <typename T> void Swap(T &x, T &y) {
+template <typename T>
+void Swap(T &x, T &y) {
   T temp = x;
   x = y;
   y = temp;
@@ -25,7 +26,8 @@ template <typename T> void Swap(T &x, T &y) {
  * @param m Number of moves performed during sorting.
  * @param c Number of comparisons performed during sorting.
  */
-template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
+template <typename T>
+void PrintArr(const T &A, size_t m, size_t c) {
   std::cout << "Sort array: ";
   PrintMas(A);
   std::cout << "Move: " << m << std::endl;
@@ -38,7 +40,8 @@ template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t SelectSort(T &A) {
+template <typename T>
+size_t SelectSort(T &A) {
   size_t m = 0, c = 0;
   size_t len = A.size();
   for (size_t i = 0; i < len - 1; i++) {
@@ -57,7 +60,8 @@ template <typename T> size_t SelectSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t BubbleSort(T &A) {
+template <typename T>
+size_t BubbleSort(T &A) {
   size_t m = 0, c = 0;
   size_t len = A.size();
   for (size_t i = 0; i < len; i++) {
@@ -79,7 +83,8 @@ template <typename T> size_t BubbleSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t ShakerSort(T &A) {
+template <typename T>
+size_t ShakerSort(T &A) {
   size_t L = 0, R = A.size() - 1, k = A.size() - 1;
   size_t m = 0, c = 0;
   do {
@@ -113,24 +118,24 @@ template <typename T> size_t ShakerSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t InsertionSort(T &A, size_t len) {
-    size_t m = 0, c = 0;
-    for (size_t i = 1; i < len; i++) {
-        bool f = true;
-        auto t = A[i];
-        long long j = i - 1;
-        while (j > -1 and t < A[j]) {
-            f = false;
-            A[j + 1] = A[j];
-            j--;
-            c++;
-            m++;
-        }
-        if (f)
-            c++;
-        A[j + 1] = t;
-        m += 2;
+template <typename T>
+size_t InsertionSort(T &A, size_t len) {
+  size_t m = 0, c = 0;
+  for (size_t i = 1; i < len; i++) {
+    bool f = true;
+    auto t = A[i];
+    long long j = i - 1;
+    while (j > -1 and t < A[j]) {
+      f = false;
+      A[j + 1] = A[j];
+      j--;
+      c++;
+      m++;
     }
-    return m + c;
+    if (f) c++;
+    A[j + 1] = t;
+    m += 2;
+  }
+  return m + c;
 }
-#endif // SORTS_HPP
+#endif  // SORTS_HPP

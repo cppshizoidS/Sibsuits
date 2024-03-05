@@ -1,11 +1,11 @@
 #ifndef SORTS_HPP
 #define SORTS_HPP
 
-#include "ArrFunc.hpp"
-
 #include <algorithm>
 #include <cstddef>
 #include <iostream>
+
+#include "ArrFunc.hpp"
 
 /**
  * @brief Swap the values of two variables.
@@ -13,7 +13,8 @@
  * @param x First variable.
  * @param y Second variable.
  */
-template <typename T> void Swap(T &x, T &y) {
+template <typename T>
+void Swap(T &x, T &y) {
   T temp = x;
   x = y;
   y = temp;
@@ -25,7 +26,8 @@ template <typename T> void Swap(T &x, T &y) {
  * @param m Number of moves performed during sorting.
  * @param c Number of comparisons performed during sorting.
  */
-template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
+template <typename T>
+void PrintArr(const T &A, size_t m, size_t c) {
   std::cout << "Sort array: ";
   PrintMas(A);
   std::cout << "Move: " << m << std::endl;
@@ -38,7 +40,8 @@ template <typename T> void PrintArr(const T &A, size_t m, size_t c) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t SelectSort(T &A) {
+template <typename T>
+size_t SelectSort(T &A) {
   size_t m = 0, c = 0;
   size_t len = A.size();
   for (size_t i = 0; i < len - 1; i++) {
@@ -57,7 +60,8 @@ template <typename T> size_t SelectSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t BubbleSort(T &A) {
+template <typename T>
+size_t BubbleSort(T &A) {
   size_t m = 0, c = 0;
   size_t len = A.size();
   for (size_t i = 0; i < len; i++) {
@@ -79,7 +83,8 @@ template <typename T> size_t BubbleSort(T &A) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t ShakerSort(T &A) {
+template <typename T>
+size_t ShakerSort(T &A) {
   size_t L = 0, R = A.size() - 1, k = A.size() - 1;
   size_t m = 0, c = 0;
   do {
@@ -106,4 +111,4 @@ template <typename T> size_t ShakerSort(T &A) {
   return m + c;
 }
 
-#endif // SORTS_HPP
+#endif  // SORTS_HPP

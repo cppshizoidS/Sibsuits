@@ -18,8 +18,7 @@
  */
 template <typename T>
 void FillInc(T &A, size_t len) {
-  for (size_t i = 0; i < len; i++)
-    A[i] = i;
+  for (size_t i = 0; i < len; i++) A[i] = i;
 }
 
 /**
@@ -30,8 +29,7 @@ void FillInc(T &A, size_t len) {
  */
 template <typename T>
 void FillDec(T &A, size_t len) {
-  for (size_t i = 1; i <= len; i++)
-    A[i - 1] = len - i;
+  for (size_t i = 1; i <= len; i++) A[i - 1] = len - i;
 }
 
 /**
@@ -46,8 +44,7 @@ void FillRand(T &A, size_t len) {
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> dis(0, 99);
 
-  for (auto &element : A)
-    element = dis(gen);
+  for (auto &element : A) element = dis(gen);
 }
 
 /**
@@ -60,8 +57,7 @@ void FillRand(T &A, size_t len) {
 template <typename T>
 int CheckSum(const T &A, size_t len) {
   int sum = 0;
-  for (const auto &element : A)
-    sum += element;
+  for (const auto &element : A) sum += element;
   return sum;
 }
 
@@ -78,8 +74,7 @@ size_t RunNumber(const T &A, size_t len) {
   size_t n = 1;
   auto pred = A[0];
   for (const auto &element : A) {
-    if (element < pred)
-      n++;
+    if (element < pred) n++;
     pred = element;
   }
   return n;
@@ -99,4 +94,4 @@ void PrintMas(const T &A, size_t len) {
   std::cout << std::endl;
 }
 
-#endif // BASE_ARR_FUNCS_HPP
+#endif  // BASE_ARR_FUNCS_HPP

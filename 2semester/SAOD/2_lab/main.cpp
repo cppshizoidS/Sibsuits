@@ -1,17 +1,17 @@
-#include "ArrFunc.hpp"
-#include "Sorts.hpp"
-
 #include <iomanip>
 #include <iostream>
 #include <vector>
 
+#include "ArrFunc.hpp"
+#include "Sorts.hpp"
+
 int main() {
   std::ios::sync_with_stdio(false);
-
+  // clang-format off
    std::cout << "| Size array |        Theoretical bubble        |            Theoretical select            |           M + C bubble           |           M + C Select         |"<< std::endl;
    std::cout << "|            | decreasing | middle | increasing | decreasing | middle max | increasing max | decreasing | random | increasing | decreasing | random| increasing|" << std::endl;
    std::cout << "|------------|------------|--------|------------|------------|------------|----------------|------------|--------|------------|------------|-------|-----------|" << std::endl;
-
+  // clang-format on
   for (size_t len_arr = 100; len_arr <= 500; len_arr += 100) {
     std::vector<int> Amin(len_arr);
     std::vector<int> Amax(len_arr);
@@ -45,7 +45,8 @@ int main() {
 
     std::cout << "| " << std::setw(11) << SelectSort(Amin, len_arr);
     std::cout << "| " << std::setw(6) << SelectSort(Arand, len_arr);
-    std::cout << "| " << std::setw(9) << SelectSort(Amax, len_arr) << " |" << std::endl;
+    std::cout << "| " << std::setw(9) << SelectSort(Amax, len_arr) << " |"
+              << std::endl;
   }
 
   return 0;
