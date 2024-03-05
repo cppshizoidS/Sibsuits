@@ -139,23 +139,21 @@ template <typename T> size_t InsertionSort(T &A, size_t len) {
  * @param A The array to be sorted.
  * @return Total number of moves and comparisons during sorting.
  */
-template <typename T> size_t ShellSort(T &A) {
-  size_t m = 0, c = 0;
-  size_t len = A.size();
-  for (size_t gap = len / 2; gap > 0; gap /= 2) {
-    for (size_t i = gap; i < len; i++) {
-      auto temp = A[i];
-      size_t j;
-      for (j = i; j >= gap && A[j - gap] > temp; j -= gap) {
-        A[j] = A[j - gap];
-        m += 3;
-        c++;
-      }
-      A[j] = temp;
-      m += 2;
+template <typename T> size_t ShellSort(T &A, size_t len) {
+    size_t m = 0, c = 0;
+    for (int d = len / 2; d > 0; d /= 2) {
+        for (size_t i = d; i < len; i++) {
+            bool f = true;
+            for (int j = i - d; j >= 0 && A[j] > A[j + d]; j -= d) {
+                Swap(A[j], A[j + d]);
+                m += 3;
+                f = false;
+                c++;
+            }
+            if (f)
+                c++;
+        }
     }
-  }
-  // PrintArr(A, m, c);
-  return m + c;
+    return m + c;
 }
 #endif
