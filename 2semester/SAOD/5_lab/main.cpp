@@ -25,9 +25,9 @@ int main() {
         std::cout << "| " << std::setw(7) << ((len_arr * len_arr - len_arr) + 5 * (len_arr - 1)) / 2;
         std::cout << "| " << std::setw(11) << 3 * (len_arr - 1);
 
-        std::cout << "| " << std::setw(11) << ShellSort(Amin);
-        std::cout << "| " << std::setw(7) << ShellSort(Arand );
-        std::cout << "| " << std::setw(11) << ShellSort(Amax) << "|\n";
+        std::cout << "| " << std::setw(11) << ShellSort(Amin, len_arr);
+        std::cout << "| " << std::setw(7) << ShellSort(Arand, len_arr);
+        std::cout << "| " << std::setw(11) << ShellSort(Amax, len_arr) << "|\n";
 
         FillDec(Amin, len_arr);
         FillInc(Amax, len_arr);
