@@ -7,30 +7,26 @@
 
 #include "ArrFunc.hpp"
 
-bool F = true;
-
-template <typename T>
-void Swap(T &x, T &y) {
+template <typename T> void Swap(T &x, T &y) {
   int temp = x;
   x = y;
   y = temp;
 }
 
-template <typename T>
-void PrintArr(T &A, size_t len, size_t m, size_t c) {
+template <typename T> void PrintArr(T &A, size_t len, size_t m, size_t c) {
   std::cout << "Sort array: ";
   PrintMas(A, len);
   std::cout << "Move: " << m << std::endl;
   std::cout << "Compare: " << c << std::endl;
 }
 
-template <typename T>
-size_t SelectSort(T &A, size_t len) {
+template <typename T> size_t SelectSort(T &A, size_t len) {
   size_t m = 0, c = 0;
   for (size_t i = 0; i < len - 1; i++) {
     int snp = i;
     for (size_t j = i + 1; j < len; j++) {
-      if (A[j] < A[snp]) snp = j;
+      if (A[j] < A[snp])
+        snp = j;
       c++;
     }
     Swap(A[i], A[snp]);
@@ -39,8 +35,7 @@ size_t SelectSort(T &A, size_t len) {
   return m + c;
 }
 
-template <typename T>
-size_t BubbleSort(T &A, size_t len) {
+template <typename T> size_t BubbleSort(T &A, size_t len) {
   size_t m = 0, c = 0;
   for (size_t i = 0; i < len; i++) {
     for (size_t j = 1; j < len - i; j++) {
@@ -54,8 +49,7 @@ size_t BubbleSort(T &A, size_t len) {
   return m + c;
 }
 
-template <typename T>
-size_t ShakerSort(T &A, size_t len) {
+template <typename T> size_t ShakerSort(T &A, size_t len) {
   size_t L = 0, R = len - 1, k = len - 1;
   size_t m = 0, c = 0;
   do {
@@ -81,8 +75,7 @@ size_t ShakerSort(T &A, size_t len) {
   return m + c;
 }
 
-template <typename T>
-size_t InsertSort(T &A, size_t len) {
+template <typename T> size_t InsertSort(T &A, size_t len) {
   size_t m = 0, c = 0;
   for (size_t i = 1; i < len; i++) {
     bool f = true;
@@ -95,20 +88,22 @@ size_t InsertSort(T &A, size_t len) {
       c++;
       m++;
     }
-    if (f) c++;
+    if (f)
+      c++;
     A[j + 1] = t;
     m += 2;
   }
   return m + c;
 }
 
-template <typename T>
-size_t ShellSort(T &A, size_t len) {
+template <typename T> size_t ShellSort(T &A, size_t len) {
+  bool F = true;
   size_t m = 0, c = 0;
   int M = static_cast<int>(std::log2(len)) - 1;
   int h[M];
   h[0] = 1;
-  for (int i = 1; i < M; i++) h[i] = 2 * h[i - 1] + 1;
+  for (int i = 1; i < M; i++)
+    h[i] = 2 * h[i - 1] + 1;
   for (int a = M - 1; a >= 0; a--) {
     for (size_t i = h[a]; i < len; i++) {
       bool f = true;
@@ -118,13 +113,15 @@ size_t ShellSort(T &A, size_t len) {
         f = false;
         c++;
       }
-      if (f) c++;
+      if (f)
+        c++;
     }
   }
 
   if (F) {
     printf("|%d ", M);
-    for (int i = 0; i < M; i++) printf(" %d", h[i]);
+    for (int i = 0; i < M; i++)
+      printf(" %d", h[i]);
 
     if (M < 6)
       printf("       ");
@@ -137,4 +134,4 @@ size_t ShellSort(T &A, size_t len) {
   return m + c;
 }
 
-#endif  // SORTS_HPP
+#endif // SORTS_HPP

@@ -36,8 +36,6 @@ int main() {
     FillDec(Amin, len_arr);
     FillInc(Amax, len_arr);
     FillRand(Arand, len_arr);
-
-    F = true;
   }
 
   return 0;

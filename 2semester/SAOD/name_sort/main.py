@@ -153,12 +153,30 @@ def heap_sort(word):
     return ''.join(word_list)
 
 
+def quick_sort(word, iteration=1):
+    if len(word) <= 1:
+        return word
+
+    pivot = word[0]
+    left = [x for x in word[1:] if x < pivot]
+    right = [x for x in word[1:] if x >= pivot]
+
+    sorted_left = quick_sort(left, iteration + 1)
+    sorted_right = quick_sort(right, iteration + 1)
+
+    sorted_word_quick = sorted_left + [pivot] + sorted_right
+
+    print_sorted_step_with_swaps(sorted_word_quick, [], f'Quick Sort (Iteration {iteration})')
+
+    return sorted_word_quick
+
 def main():
     word = input("Enter a word to sort: ")
 
     # # Selection Sort
     # sorted_word_selection = selection_sort(word)
-    # print("\nWord sorted alphabetically using Selection Sort:", sorted_word_selection)
+    #print("\nWord sorted alphabetically using Selection Sort:",
+    #       sorted_word_selection)
 
     # # Insertion Sort
     # sorted_word_insertion = insertion_sort(word)
@@ -177,8 +195,12 @@ def main():
     # print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
 
     # Heap Sort
-    sorted_word_heap = heap_sort(word)
-    print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
+    #sorted_word_heap = heap_sort(word)
+    #print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
+
+    # Quick Sort
+    sorted_word_quick = quick_sort(list(word))
+    print("\nWord sorted alphabetically using Quick Sort:",''.join(sorted_word_quick))
 
 
 if __name__ == "__main__":
