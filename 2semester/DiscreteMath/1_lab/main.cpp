@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <iterator>
 #include <sstream>
 #include <vector>
 /**
@@ -83,6 +84,19 @@ bool containsSets(const std::vector<char> &setA,
   return std::includes(setA.begin(), setA.end(), setB.begin(), setB.end());
 }
 
+std::vector<char> symmetricDifferenceSets(const std::vector<char> &setA, const std::vector<char> &setB) {
+    std::vector<char> result;
+    std::set_symmetric_difference(setA.begin(), setA.end(), setB.begin(), setB.end(), std::back_inserter(result));
+    return removeDuplicatesAndSort(result);
+}
+
+std::vector<char> symmetricDifferenceBetweenSets(const std::vector<char> &setA,
+                                                 const std::vector<char> &setB) {
+  std::vector<char> diff1 = differenceSets(setA, setB);
+  std::vector<char> diff2 = differenceSets(setB, setA);
+  return unionSets(diff1, diff2);
+}
+
 auto main() -> int {
   std::vector<char> setA, setB;
 
@@ -114,15 +128,16 @@ auto main() -> int {
     std::cout << "2. Объединение A и B\n";
     std::cout << "3. Пересечение A и B\n";
     std::cout << "4. Разность A и B\n";
-    std::cout << "5. Выйти\n";
+    std::cout << "5. Симметрическая разность A и B\n";
+    std::cout << "6. Разность (A \\ B) и (B \\ A)\n";
+    std::cout << "7. Выйти\n";
     std::cout << "Введите номер операции: ";
     std::cin >> choice;
 
+
     switch (choice) {
     case '1':
-      std::cout << "A "
-                << (containsSets(setA, setB) ? "включает" : "не включает")
-                << " B\n";
+      std::cout << "A " << (containsSets(setA, setB) ? "включает" : "не включает") << " B\n";
       break;
     case '2':
       std::cout << "A ∪ B = ";
@@ -140,12 +155,22 @@ auto main() -> int {
       std::cout << std::endl;
       break;
     case '5':
+      std::cout << "A △ B = "; // △ представляет собой символ симметрической разности
+      printSet(symmetricDifferenceSets(setA, setB));
+      std::cout << std::endl;
+      break;
+    case '6':
+      std::cout << "(A \\ B) ∪ (B \\ A) = ";
+      printSet(symmetricDifferenceBetweenSets(setA, setB));
+      std::cout << std::endl;
+      break;
+    case '7':
       std::cout << "Программа завершена.\n";
       break;
     default:
       std::cout << "Некорректный ввод. Попробуйте еще раз.\n";
     }
-  } while (choice != '5');
+  } while (choice != '7');
 
   return 0;
 }
