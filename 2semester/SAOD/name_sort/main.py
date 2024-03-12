@@ -166,16 +166,18 @@ def quick_sort(word, iteration=1):
 
     sorted_word_quick = sorted_left + [pivot] + sorted_right
 
-    print_sorted_step_with_swaps(sorted_word_quick, [], f'Quick Sort (Iteration {iteration})')
+    print_sorted_step_with_swaps(
+        sorted_word_quick, [], f'Quick Sort (Iteration {iteration})')
 
     return sorted_word_quick
+
 
 def main():
     word = input("Enter a word to sort: ")
 
     # # Selection Sort
     # sorted_word_selection = selection_sort(word)
-    #print("\nWord sorted alphabetically using Selection Sort:",
+    # print("\nWord sorted alphabetically using Selection Sort:",
     #       sorted_word_selection)
 
     # # Insertion Sort
@@ -191,16 +193,16 @@ def main():
     # print("\nWord sorted alphabetically using Shaker Sort:", sorted_word_shaker)
 
     # Shell Sort
-    # sorted_word_shell = shell_sort(word)
-    # print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
+    sorted_word_shell = shell_sort(word)
+    print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
 
     # Heap Sort
-    #sorted_word_heap = heap_sort(word)
-    #print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
+    # sorted_word_heap = heap_sort(word)
+    # print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
 
     # Quick Sort
-    sorted_word_quick = quick_sort(list(word))
-    print("\nWord sorted alphabetically using Quick Sort:",''.join(sorted_word_quick))
+    # sorted_word_quick = quick_sort(list(word))
+    # print("\nWord sorted alphabetically using Quick Sort:",''.join(sorted_word_quick))
 
 
 if __name__ == "__main__":
