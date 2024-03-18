@@ -79,8 +79,8 @@ circle(1.0 2.1, 3) 123
 Error at column 19: unexpected token
 ```
 
-
-```sh
+How to run:
+```bash
 cd geometry
 ./main ../geometry.txt
 ```
