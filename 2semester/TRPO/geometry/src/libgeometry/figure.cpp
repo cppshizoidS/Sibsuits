@@ -1,8 +1,8 @@
-#include "./headers/figure.h"
+#include "./include/figure.h"
 
 #include <climits>
 
-#include "./headers/circle.h"
+#include "./include/circle.h"
 
 bool Figure::intersects(const Figure &) const { return false; }
 

@@ -10,7 +10,7 @@ class Circle;
 class Triangle;
 
 class Figure {
- public:
+public:
   std::vector<int> type_args;
   std::vector<std::string> str_args;
   std::vector<Point> points;
@@ -28,7 +28,7 @@ class Figure {
 
   virtual std::string get_name() const = 0;
 
- protected:
+protected:
   virtual bool intersects_with_circle(const Circle &) const { return false; }
   virtual bool intersects_with_triangle(const Triangle &) const {
     return false;

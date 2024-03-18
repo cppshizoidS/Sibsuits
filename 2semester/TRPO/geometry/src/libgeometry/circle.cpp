@@ -1,7 +1,7 @@
-#include "./headers/circle.h"
+#include "./include/circle.h"
 
-#include "./headers/figure.h"
-#include "./headers/triangle.h"
+#include "./include/figure.h"
+#include "./include/triangle.h"
 
 std::string Circle::get_name() const { return "circle"; }
 
@@ -44,7 +44,8 @@ bool Circle::intersects_with_triangle(const Triangle &other) const {
   for (std::size_t i = 0; i < other.points.size(); i++) {
     const double distance = Point::get_distance(other.points[i], this->center);
 
-    if (distance < this->radius) return true;
+    if (distance < this->radius)
+      return true;
   }
   return false;
 }

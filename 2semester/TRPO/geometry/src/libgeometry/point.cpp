@@ -1,4 +1,4 @@
-#include "./headers/point.h"
+#include "./include/point.h"
 
 Point Point::from_string(std::string str) {
   Point point = {0, 0};

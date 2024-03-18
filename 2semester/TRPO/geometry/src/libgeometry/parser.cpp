@@ -1,8 +1,8 @@
-#include "./headers/parser.h"
+#include "./include/parser.h"
 
-#include "./headers/circle.h"
-#include "./headers/figure.h"
-#include "./headers/triangle.h"
+#include "./include/circle.h"
+#include "./include/figure.h"
+#include "./include/triangle.h"
 
 const std::vector<std::string> figure_names = {"circle", "triangle"};
 int find_figure(std::string str) {

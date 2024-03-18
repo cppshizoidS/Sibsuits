@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "../src/libgeometry/headers/figure.h"
-#include "../src/libgeometry/headers/parser.h"
+#include "../src/libgeometry/include/figure.h"
+#include "../src/libgeometry/include/parser.h"
 
 CTEST(ctest, CHECK_SIZE) {
   std::vector<Figure *> figures = read_from_file("geometry.txt");

@@ -3,15 +3,15 @@
 #include "point.h"
 
 class Circle : public Figure {
- public:
+public:
   std::string name;
   Point center;
   double radius;
 
   Circle(std::string &wkt);
 
-  double get_perimeter();
-  double get_area();
+  double get_perimeter() override;
+  double get_area() override;
 
   bool intersects(const Figure &figure) const override;
 

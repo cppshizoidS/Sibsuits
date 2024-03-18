@@ -1,4 +1,4 @@
-#include "./headers/utils.h"
+#include "./include/utils.h"
 
 void print_error(std::string str, int index, std::string err_msg) {
   std::cerr << str << std::endl;

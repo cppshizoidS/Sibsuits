@@ -3,7 +3,7 @@
 #include "figure.h"
 
 class Triangle : public Figure {
- public:
+public:
   Triangle(std::string &wkt);
 
   bool intersects(const Figure &figure) const override;

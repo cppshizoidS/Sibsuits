@@ -1,7 +1,7 @@
-#include "./headers/triangle.h"
+#include "./include/triangle.h"
 
-#include "./headers/circle.h"
-#include "./headers/figure.h"
+#include "./include/circle.h"
+#include "./include/figure.h"
 
 Triangle::Triangle(std::string &wkt) {
   this->type_args = {POINT, POINT, POINT, POINT};
