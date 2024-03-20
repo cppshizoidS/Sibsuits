@@ -3,12 +3,26 @@
 #include <string>
 #include <iomanip>
 #include <algorithm>
-
+/**
+ * @struct phoneInfo
+ * @brief Structure representing phone information including first name, last name, patronymic, and phone number.
+ */
 struct phoneInfo
 {
-    std::string firstname,lastname,patronymic,phoneNumber;
+    std::string firstname; /**< First name */
+    std::string lastname; /**< Last name */
+    std::string patronymic; /**< Patronymic */
+    std::string phoneNumber; /**< Phone number */
 };
-
+/**
+ * @brief Compare function to compare two phoneInfo structures based on specified keys.
+ * @param x First phoneInfo object.
+ * @param y Second phoneInfo object.
+ * @param fKey First sorting key.
+ * @param sKey Second sorting key.
+ * @param reverse Flag indicating whether to sort in reverse order.
+ * @return True if x is less than y based on sorting keys, otherwise false.
+ */
 bool comprasion(phoneInfo x, phoneInfo y,int &fKey,int &sKey,bool &reverse)
 {
     std::string fKeyPole1 ,fKeyPole2, sKeyPole1,sKeyPole2 ;
@@ -45,7 +59,13 @@ bool comprasion(phoneInfo x, phoneInfo y,int &fKey,int &sKey,bool &reverse)
             return sKeyPole1 < sKeyPole2;
     }
 }
-
+/**
+ * @brief Perform selection sort on a vector of phoneInfo objects based on specified keys.
+ * @param phoneBook Vector of phoneInfo objects to be sorted.
+ * @param fKey First sorting key.
+ * @param sKey Second sorting key.
+ * @param reverse Flag indicating whether to sort in reverse order.
+ */
 void SelectSort(std::vector <phoneInfo> &phoneBook,int &fKey,int &sKey,bool &reverse)
 {
     int k;
@@ -62,6 +82,11 @@ void SelectSort(std::vector <phoneInfo> &phoneBook,int &fKey,int &sKey,bool &rev
         std::swap(phoneBook[i],phoneBook[k]);
     }
 }
+
+/**
+ * @brief Print the phone book as a table.
+ * @param phoneBook Vector of phoneInfo objects to be printed.
+ */
 void printTable(std::vector<phoneInfo> &phoneBook)
 {
     std::cout << std::left << std::setw(15) << "First name" 
