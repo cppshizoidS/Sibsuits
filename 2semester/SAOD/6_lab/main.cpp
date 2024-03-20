@@ -1,4 +1,7 @@
 #include "binary_search.hpp"
+#include "ArrFunc.hpp"
+#include <iomanip>
+#include <iostream> // Include iostream for std::cout and std::cin
 
 int main() {
   std::vector<int> arr = {1, 2, 3, 4, 5,
@@ -6,38 +9,27 @@ int main() {
   int comparisons1 = 0, comparisons2 = 0;
   int position1, position2;
 
-  // Поиск первого элемента массива
-  position1 = binarySearchWithKeyAsArg(arr, arr[0], comparisons1);
-  comparisons2 = 0; // Сброс счетчика сравнений
-  position2 = binarySearchVersion2(arr, comparisons2);
+    int x;
 
-  std::cout << "Поиск первого элемента:" << std::endl;
-  std::cout << "Версия 1 - Позиция: " << position1
-            << ", Сравнения: " << comparisons1 << std::endl;
-  std::cout << "Версия 2 - Позиция: " << position2
-            << ", Сравнения: " << comparisons2 << std::endl;
+    std::cout << "Введите значение: "; 
+    std::cin >> x;
 
-  // Поиск последнего элемента массива
-  position1 = binarySearchWithKeyAsArg(arr, arr.back(), comparisons1);
-  comparisons2 = 0; // Сброс счетчика сравнений
-  position2 = binarySearchVersion2(arr, comparisons2);
+    std::cout << "| Size array | Binary Search 1 | Binary Search 2 |\n"; 
+    std::cout << "|------------|-----------------|-----------------|\n"; 
 
-  std::cout << "\nПоиск последнего элемента:" << std::endl;
-  std::cout << "Версия 1 - Позиция: " << position1
-            << ", Сравнения: " << comparisons1 << std::endl;
-  std::cout << "Версия 2 - Позиция: " << position2
-            << ", Сравнения: " << comparisons2 << std::endl;
+    for (size_t len_arr = 100; len_arr <= 1000; len_arr += 100) {
+        std::vector<int> arr(len_arr);
 
-  // Поиск элемента, которого нет в массиве
-  position1 = binarySearchWithKeyAsArg(arr, 99, comparisons1);
-  comparisons2 = 0; // Сброс счетчика сравнений
-  position2 = binarySearchVersion2(arr, comparisons2);
+        FillInc(arr, len_arr);
 
-  std::cout << "\nПоиск элемента, которого нет в массиве:" << std::endl;
-  std::cout << "Версия 1 - Позиция: " << position1
-            << ", Сравнения: " << comparisons1 << std::endl;
-  std::cout << "Версия 2 - Позиция: " << position2
-            << ", Сравнения: " << comparisons2 << std::endl;
+        BinarySearch1(arr, len_arr, x);
+        BinarySearch2(arr, len_arr, x);
 
-  return 0;
+        std::cout << "| " << std::setw(11) << len_arr; 
+        std::cout << " | " << std::setw(15) << COMPARE_BINARY_SEARCH_1; 
+        std::cout << " | " << std::setw(15) << COMPARE_BINARY_SEARCH_1;
+        std::cout << " |\n"; 
+    }
+
+    return 0;
 }
