@@ -2,8 +2,6 @@
 
 #include <climits>
 
-#include "./include/circle.h"
-
 bool Figure::intersects(const Figure &) const { return false; }
 
 double Figure::get_perimeter() {

@@ -1,4 +1,4 @@
-#include "../libgeometry/headers/parser.h"
+#include "../libgeometry/include/parser.h"
 
 int main(int argc, char *argv[]) {
   if (argc != 2 || std::string(argv[1]).empty()) {
