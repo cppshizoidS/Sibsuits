@@ -1,80 +1,64 @@
-CC = g++
-CFLAGS = -Wall -Werror
-DEPS = -MMD
+APP_NAME = geometry
+LIB_NAME = libgeometry
+TEST_NAME = main_test
 
-OUT_DIR = bin
+TESTFLAGS = -I thirdparty
+CFLAGS = -Wall -Werror -I src
+DEPSFLAGS = -MMD
+CC = clang
 
-TARGET = main
-TARGET_OUT_NAME = geometry
-LIB_TARGET = libgeometry
-LIB_OUT_NAME = $(LIB_TARGET).a
-LIB_HEADERS_DIR = $(SRC_DIR)/libgeometry/headers
-
-SRC_DIR = src
+BIN_DIR = bin
 OBJ_DIR = obj
-LIB_OBJ_DIR = $(OBJ_DIR)/$(LIB_TARGET)
-LIB_SRC_DIR = $(SRC_DIR)/$(LIB_TARGET)
-LIB_INC_DIR = $(LIB_SRC_DIR)/headers
+SRC_DIR = src
+TEST_DIR = test
 
-LIB_OBJECTS = $(LIB_OBJ_DIR)/utils.o \
-	$(LIB_OBJ_DIR)/point.o \
-	$(LIB_OBJ_DIR)/figure.o \
-	$(LIB_OBJ_DIR)/circle.o \
-	$(LIB_OBJ_DIR)/triangle.o \
-	$(LIB_OBJ_DIR)/parser.o
+APP_PATH = $(BIN_DIR)/$(APP_NAME)
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
+TEST_PATH = $(BIN_DIR)/$(TEST_NAME)
 
-THIRDPARTY_DIR = thirdparty
+APP_SOURCES = $(wildcard $(SRC_DIR)/$(APP_NAME)/*.c)
+APP_OBJECTS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(APP_SOURCES))
 
-TEST_SRC_DIR = test
-TEST_OUT_NAME = $(TARGET_OUT_NAME)-test
-TEST_OBJ_DIR = $(OBJ_DIR)/$(TEST_OUT_NAME)
-TEST_OBJECTS = $(TEST_OBJ_DIR)/ctest.o $(TEST_OBJ_DIR)/main.o
+LIB_SOURCES = $(wildcard $(SRC_DIR)/$(LIB_NAME)/*.c)
+LIB_OBJECTS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(LIB_SOURCES))
 
-SRCS := $(shell find . -type f -name '*.cpp')
-HDRS := $(shell find . -type f -name '*.h')
+TEST_SOURCES = $(wildcard $(TEST_DIR)/*.c)
+TEST_OBJECTS = $(patsubst %.c, $(OBJ_DIR)/%.o, $(TEST_SOURCES))
 
-all: clean format \
-	$(OUT_DIR)/$(TARGET_OUT_NAME)/$(LIB_OUT_NAME) \
-	test \
-	$(OUT_DIR)/$(TARGET_OUT_NAME)/$(TARGET) 
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d) $(TEST_OBJECTS:.o=.d)
 
-# Final
-$(OUT_DIR)/$(TARGET_OUT_NAME)/$(TARGET): \
-	$(SRC_DIR)/$(TARGET_OUT_NAME)/$(TARGET).cpp \
-	$(OUT_DIR)/$(TARGET_OUT_NAME)/$(LIB_OUT_NAME)
+.PHONY: all test clean
+all: $(APP_PATH)
 
-	$(CC) $(CFLAGS) -I$(LIB_HEADERS_DIR) -L$(OUT_DIR)/$(TARGET_OUT_NAME) -l$(TARGET_OUT_NAME) -o $@ $^
-	
-# Lib
-$(OUT_DIR)/$(TARGET_OUT_NAME)/$(LIB_OUT_NAME): $(LIB_OBJECTS)
+-include $(DEPS)
+
+# BUILD
+$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) -o $@ $^ -lm
+
+$(LIB_PATH): $(LIB_OBJECTS)
 	ar rcs $@ $^
 
-$(LIB_OBJ_DIR)/%.o: $(LIB_SRC_DIR)/%.cpp
-	$(CC) $(CFLAGS) $(DEPS) -I$(LIB_INC_DIR) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c
+	$(CC) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $< -lm
 
-# Test
-$(OUT_DIR)/$(TEST_OUT_NAME)/$(TEST_OUT_NAME): $(TEST_OBJECTS)
-	$(CC) $(TEST_OBJECTS) -I$(THIRDPARTY_DIR) -I$(LIB_HEADERS_DIR) -L$(OUT_DIR)/$(TARGET_OUT_NAME) -l$(TARGET_OUT_NAME) -w -o $@
+# TEST
+test: $(LIB_PATH) $(TEST_PATH)
+	$(TEST_PATH)
 
-$(TEST_OBJ_DIR)/%.o: $(TEST_SRC_DIR)/%.cpp
-	$(CC) $(DEPS) -I$(THIRDPARTY_DIR) -I$(LIB_HEADERS_DIR) -L$(OUT_DIR)/$(TARGET_OUT_NAME) -l$(TARGET_OUT_NAME) -c $< -w -o $@
+$(TEST_PATH): $(TEST_OBJECTS) $(LIB_PATH)
+	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -o $@ $^ -lm
 
-# Utils
-run: $(OUT_DIR)/$(TARGET_OUT_NAME)/$(TARGET)
-	./$< geometry.txt
+$(OBJ_DIR)/test/main.o: test/main.c
+	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
 
-test: $(OUT_DIR)/$(TEST_OUT_NAME)/$(TEST_OUT_NAME)
-	./$<
+$(OBJ_DIR)/test/tests.o: test/tests.c
+	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
 
+# RUN
+run: all
+	$(APP_PATH) $(BIN_DIR)/test.txt
+
+# CLEAN
 clean:
-	rm -rf $(OBJ_DIR)/geometry/*.o $(OBJ_DIR)/geometry/*.d
-	rm -rf $(TEST_OBJ_DIR)/*.o $(TEST_OBJ_DIR)/*.d
-	rm -rf $(LIB_OBJ_DIR)/*.o $(LIB_OBJ_DIR)/*.d
-
-format:
-	clang-format -i $(SRCS) $(HDRS)
-
-a:
-	echo $(wildcard TEST_SRC_DIR/*.cpp)
-
-.PHONY: all run clean format test
+	$(RM) $(APP_PATH) $(TEST_PATH) $(OBJ_DIR)/*/*/*.[aod] $(OBJ_DIR)/test/*.[aod]

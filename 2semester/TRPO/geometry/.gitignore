@@ -1,0 +1,6 @@
+*.a
+*.d
+*.o
+bin/geometry
+.vscode
+main_test
