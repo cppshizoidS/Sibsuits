@@ -51,7 +51,7 @@
 - [8 Quick sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/8_lab)
 
 
-[ТРПО Технологии разработки программного обеспечения](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO)
+[ТРПО Технологии разработки программного обеспечения](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) (папка представляет собой копию веток репозитория с гитлаба который хостится в сибгути)
 - [0 Знакомство с гитом](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/TRPO/lab_0)
 - [1 Основы git, основы make](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_1)
 - [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
