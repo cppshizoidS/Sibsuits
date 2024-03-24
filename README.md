@@ -4,8 +4,8 @@
 
 ## Первый семак
 [Информатика](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica) 
-- ASM(5 лаба)
-- SQL(7-9 лабы)
+- MIPS ASM(5 лаба)
+- SQL(SQLite)(7-9 лабы)
 - C#(11-14)
 
 [Программирование](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming)
