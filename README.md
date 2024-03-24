@@ -50,6 +50,9 @@
 - [7 Sort with keys](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/7_lab)
 - [8 Quick sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/8_lab)
 
+- [Сортировка имени разными сортировками пошагово](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/SAOD/name_sort/main.py)
+- [Применение алгоритмов поиска к именам пошагов](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/SAOD/name_searchs/main.py)
+
 
 [ТРПО Технологии разработки программного обеспечения](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) (папка представляет собой копию веток репозитория с гитлаба который хостится в сибгути)
 - [0 Знакомство с гитом](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/TRPO/lab_0)
