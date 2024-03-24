@@ -2,10 +2,13 @@ APP_NAME = geometry
 LIB_NAME = libgeometry
 TEST_NAME = main_test
 
+BIN = $(shell mkdir bin)
+
 TESTFLAGS = -I thirdparty
 CFLAGS = -Wall -I src
 DEPSFLAGS = -MMD
-CC = clang
+CC = g++
+
 
 BIN_DIR = bin
 OBJ_DIR = obj
@@ -40,6 +43,7 @@ $(LIB_PATH): $(LIB_OBJECTS)
 	ar rcs $@ $^
 
 $(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $< -lm
 
 # TEST
