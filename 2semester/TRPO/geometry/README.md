@@ -13,6 +13,15 @@ circle((0 0, 1.5)
 Error at column 7: expected ')'
 ```
 
+Грамматика EBFN
+
+```
+Object = 'circle' '(' Point ',' Number ')'
+       | 'triangle' '(' '(' Point ',' Point ',' Point ',' Point ')' ')'
+Point = Number Number
+Number = (* Floating-point number *)
+```
+
 # How to run
 
 ```sh
