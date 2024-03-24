@@ -1,1 +1,42 @@
 # SibsuitsLabs
+
+Свалочка лаб за время обучения в сибгути
+
+## Первый семак
+[Информатика](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica) 
+- ASM(5 лаба)
+- SQL(7-9 лабы)
+- C#(11-14)
+
+[Программирование](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming)
+- [1 Программирование алгоритмов линейной структуры](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/1_lab)
+- [2 Условный оператор if](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/2_lab)
+- [3 Множественное ветвление switch case](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/3_lab)
+- [4 Цикл с параметром](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/4_lab)
+- [5 Цикл с неизвестным числом повторений](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/5_lab)
+- [6 Одномерные массивы](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/6_lab)
+- [7 Обработка одномерных массивов](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/7_lab)
+- [8 Вычисление определенных интегралов](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/8_lab)
+- [9 Матрицы(двумерные массивы)](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/9_lab)
+- [10 Работа с символьными данными](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/10_lab)
+- [11 Работа с графическими библиотеками](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/11_lab)
+- [12 Анимаци](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/12_lab)
+- [РГЗ: Движение графических объектов используя ввод с клавиатуры](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/kontr)
+
+## Второй семак
+
+[Программирование](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming)
+- [1 Функции](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/1_lab)
+- [2 Рекурсия](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/2_lab)
+- [3 Работа с одномерными динамическими массивами](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/3_lab)
+- [4 Двумерные динамические массивы](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/4_lab)
+- [5 Многомерные динамические массивы](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/5_lab)
+- [6 Функции. Передача параметров по адресу и ссылке](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/6_lab)
+- [7 Массивы как параметры функций](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/7_lab)
+- [8 Структуры](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/8_lab)
+- [9 Cписки и деревья](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/9_lab)
+- [10 Программные средства для работы с файлами. Текстовые файлы.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/10_lab)
+- [11 Обработка бинарных файлов](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/11_lab)
+- [12 Передача функций в качестве параметра.Перегрузка функций.Создание проектов.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/12_lab)
+- [Курсач: Работа с файлами, структурами и сортировками.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/Course_work)
+
