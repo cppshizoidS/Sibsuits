@@ -3,7 +3,7 @@ LIB_NAME = libgeometry
 TEST_NAME = main_test
 
 TESTFLAGS = -I thirdparty
-CFLAGS = -Wall -Werror -I src
+CFLAGS = -Wall -I src
 DEPSFLAGS = -MMD
 CC = clang
 
