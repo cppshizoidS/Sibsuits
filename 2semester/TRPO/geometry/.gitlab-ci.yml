@@ -1,0 +1,35 @@
+default:
+  image: registry.csc.sibsutis.ru/trpo/ci
+
+.build-script:
+  script:
+    - echo "Compiling the code..."
+    - make -j($nproc)
+    - echo "Compile complete."
+
+.test-script:
+  script:
+    - echo "Compiling the code..."
+    - make test -j($nproc)
+    - echo "Compile complete."
+
+.check-codestyle:
+  script:
+    - echo "Check codestyle..."
+    - git ls-files *.{c,h} | xargs clang-format -i --verbose && git diff --exit-code
+    - echo "Codestyle is fine."
+
+stages:
+  - check-codestyle
+  - build
+
+checkstyle:
+  stage: check-codestyle
+  extends: .check-codestyle
+
+build:
+  stage: build
+  extends: .build-script
+
+test:
+  stage: test
