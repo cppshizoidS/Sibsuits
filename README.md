@@ -56,6 +56,6 @@
 - [1 Основы git, основы make](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_1)
 - [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
 - [3 Сборка приложения, Готовое приложение Geometry](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry)
-Так же в папке содержится [гайд](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) по гиту и сборке, тестированию и дебагу проектов C/C++ который можно найти здесь https://cppshizoids.github.io/TRPO/index.html
+Так же в папке содержится [гайд](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) по гиту и сборке, тестированию и дебагу проектов C/C++ который можно найти [здесь](https://cppshizoids.github.io/TRPO/index.html)
 
   ![](https://tokei.rs/b1/github/cppshizoidS/SibsuitsLabs?category=code)
