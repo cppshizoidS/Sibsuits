@@ -56,3 +56,5 @@
 - [1 Основы git, основы make](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_1)
 - [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
 - [3 Сборка приложения, Готовое приложение Geometry](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry)
+
+  ![](https://tokei.rs/b1/github/cppshizoidS/SibsuitsLabs?category=code)
