@@ -40,3 +40,19 @@
 - [12 Передача функций в качестве параметра.Перегрузка функций.Создание проектов.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/12_lab)
 - [Курсач: Работа с файлами, структурами и сортировками.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/Programming/Course_work)
 
+[САОД Структуры и алгоритмы обработки данных ](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD)
+- [1 Базовые функции](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/1_lab)
+- [2 Select sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/2_lab)
+- [3 Shacker sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/3_lab)
+- [4 Insertion sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/4_lab)
+- [5 Shell sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/5_lab)
+- [6 Binary search](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/6_lab)
+- [7 Sort with keys](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/7_lab)
+- [8 Quick sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/8_lab)
+
+
+[ТРПО Технологии разработки программного обеспечения](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO)
+- [0 Знакомство с гитом](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/TRPO/lab_0)
+- [1 Основы git, основы make](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_1)
+- [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
+- [3 Сборка приложения, Готовое приложение Geometry](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry)
