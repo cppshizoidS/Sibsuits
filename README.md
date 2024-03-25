@@ -4,9 +4,18 @@
 
 ## Первый семак
 [Информатика](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica) 
-- MIPS ASM(5 лаба)
+- MIPS ASM (5 лаба)
 - SQL(SQLite)(7-9 лабы)
 - C#(11-14)
+- [5 MIPS ASM Вывести число N без K-ой цифры. Числа N и К считываются с клавиатуры, первое число - N, затем K.](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica/5theme)
+- [7 SQLite Написать SQL команды для создания таблиц в базе данных по схеме.](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/1_semestr/Informatica/7theme/task.sql)
+- [8 Создание запросов на выборку к базе данных ч.1](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica/8theme)
+- [9 Создание запросов на выборку к базе данных ч.2](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica/9theme)
+- [11 Введение в C#](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/1_semestr/Informatica/11theme)
+- [12 Делегаты](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/1_semestr/Informatica/12theme)
+- [13 ООП](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/1_semestr/Informatica/13theme)
+- [14 Диаграмма классов](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Informatica/14theme)
+
 
 [Программирование](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming)
 - [1 Программирование алгоритмов линейной структуры](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/1_semestr/Programming/1_lab)
