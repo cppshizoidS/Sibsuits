@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -Wall -Wextra -std=c99
+CFLAGS = -Wall -Wextra 
 LDFLAGS = -lncurses -lrt
 
 SRCS = main.c
