@@ -1,6 +1,6 @@
 # Required packages
 
-cmake, ninja(recommended), clang/gcc, clang-format
+cmake, ninja(recommended), clang 18/gcc 14(if lower use std::cout), clang-format
 
 # Run
 
