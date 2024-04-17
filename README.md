@@ -59,6 +59,7 @@
 - [7 Sort with keys](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/7_lab)
 - [8 Quick sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/8_lab)
 - [9 Heap sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/9_lab)
+- [10 Lits](https://github.com/cppshizoidS/sibsuitsLabs/tree/main/2semester/SAOD/10_lab)
 
 - [Сортировка имени разными сортировками пошагово](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/SAOD/name_sort/main.py)
 - [Применение алгоритмов поиска к именам пошагов](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/SAOD/name_searchs/main.py)
