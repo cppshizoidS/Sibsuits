@@ -30,6 +30,8 @@
 *.out
 *.app
 *.ELF
+#idea
+.idea
 
 #файлы сборки(для лаб они не нужны но будут полезны если решите изучать плюсы и тулинг для них дальше)
 .ninja_*
@@ -40,3 +42,4 @@ Testing/*
 CMakeCache.txt
 build_ninja
 cmake_install.cmake
+cmake-build-debug

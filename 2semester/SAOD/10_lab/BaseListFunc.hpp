@@ -1,78 +1,72 @@
+//
+// Created by cppshizoid on 4/23/24.
+//
+
 #ifndef LIST_FUNCTIONS_HPP
 #define LIST_FUNCTIONS_HPP
 
-#include "List.hpp"
 #include <iostream>
 
+#include "List.hpp"
+#include "Node.hpp"
+
 namespace list_functions {
+template <typename T>
+class SinglyLinkedList {
+ private:
+  Node<T> *head;
+  int sizeOfList;
 
-// Print elements of the list
-template<typename T>
-void printList(const single_linked_list<T>& list) {
-  for (const auto& item : list) {
-    std::cout << item << ' ';
-  }
-  std::cout << std::endl;
-}
-
-// Calculate the checksum of the elements in the list
-template<typename T>
-int calculateChecksum(const single_linked_list<T>& list) {
-  int checksum = 0;
-  for (const auto& item : list) {
-    checksum += item;
-  }
-  return checksum;
-}
-
-// Count the number of series in the list
-template<typename T>
-int countSeries(const single_linked_list<T>& list) {
-  if (list.empty()) {
-    return 0;
+ public:
+  SinglyLinkedList() {
+    head = nullptr;
+    sizeOfList = 0;
   }
 
-  int seriesCount = 1;
-  auto prev = list.begin();
-  auto curr = prev;
+  ~SinglyLinkedList() { clear(); }
 
-  for (++curr; curr != list.end(); ++curr) {
-    if (*curr != *prev) {
-      ++seriesCount;
+  bool isEmpty() { return head == nullptr; }
+
+  void insertFront(T data) {
+    Node<T> *newNode = new Node<T>(data, nullptr);
+    newNode->data = data;
+    newNode->next = head;
+    head = newNode;
+    sizeOfList++;
+  }
+
+  void removeFront() {
+    if (!isEmpty()) {
+      Node<T> *temp = head;
+      head = head->next;
+      delete temp;
+      sizeOfList--;
     }
-    prev = curr;
   }
 
-  return seriesCount;
-}
-
-// Function to remove all elements from the list
-template<typename T>
-void removeAll(single_linked_list<T>& list) {
-  list.clear();
-}
-
-// Recursive function to print elements of the list in forward order
-template<typename T>
-void printForwardRecursive(typename single_linked_list<T>::const_iterator current) {
-  if (current != current.cend()) {
-    std::cout << *current << ' ';
-    printForwardRecursive<T>(++current);
+  T getFront() {
+    if (!isEmpty()) {
+      return head->data;
+    }
   }
-}
 
-// Recursive function to print elements of the list in reverse order
-template<typename T>
-void printReverseRecursive(typename single_linked_list<T>::const_iterator current) {
-  if (current != current.end()) {
-    printReverseRecursive<T>(++current);
-    --current;
-    std::cout << *current << ' ';
+  int size() { return sizeOfList; }
+
+  void printList() {
+    if (!isEmpty()) {
+      Node<T> *temp = head;
+      while (temp != nullptr) {
+        std::cout << temp->data << " ";
+        temp = temp->next;
+      }
+      std::cout << "\n";
+    }
   }
+
+  void clear() {
+    while (!isEmpty()) removeFront();
+  }
+};
 }
 
-
-
-} // namespace list_functions
-
-#endif // LIST_FUNCTIONS_HPP
+#endif
