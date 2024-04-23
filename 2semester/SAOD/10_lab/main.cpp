@@ -1,7 +1,3 @@
-//
-// Created by cppshizoid on 4/23/24.
-//
-
 #include "List.hpp"
 #include "Queue.hpp"
 #include "Stack.hpp"
@@ -93,11 +89,9 @@ auto main() -> int {
   int inclistseries = list.countSeries(); // Fixed the variable name here
   std::cout << "Series inc list: " << inclistseries << "\n";
 
-
   std::cout << "Rand list: ";
   list.fill_rand(FILL_SIZE);
   list.printRecursiveForward();
-
 
   int randlistsum = list.check_sum();
   std::cout << "Sum rand list: " << randlistsum << "\n";
