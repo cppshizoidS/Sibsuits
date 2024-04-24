@@ -19,7 +19,7 @@ int main() {
     FreeMoveObject.setOutlineColor(sf::Color(0, 0, 0));
     sf::Text text_FreeMoveObject;
     sf::Font font_FreeMoveObject;
-    font_FreeMoveObject.loadFromFile("font/PledgeblackRegular.ttf");
+    font_FreeMoveObject.loadFromFile("../font/PledgeblackRegular.ttf");
     text_FreeMoveObject.setFont(font_FreeMoveObject);
     text_FreeMoveObject.setString("1. Free movement of the object");
     text_FreeMoveObject.setCharacterSize(42);
@@ -35,7 +35,7 @@ int main() {
     MoveObjectWithKeyboard.setOutlineColor(sf::Color(0, 0, 0));
     sf::Text text_MoveObjectWithKeyboard;
     sf::Font font_MoveObjectWithKeyboard;
-    font_MoveObjectWithKeyboard.loadFromFile("font/PledgeblackRegular.ttf");
+    font_MoveObjectWithKeyboard.loadFromFile("../font/PledgeblackRegular.ttf");
     text_MoveObjectWithKeyboard.setFont(font_MoveObjectWithKeyboard);
     text_MoveObjectWithKeyboard.setString(
         "2. Moving an object using the keyboard");
@@ -53,7 +53,7 @@ int main() {
     // menu font
     sf::Text text_Exit;
     sf::Font font_Exit;
-    font_Exit.loadFromFile("font/PledgeblackRegular.ttf");
+    font_Exit.loadFromFile("../font/PledgeblackRegular.ttf");
     text_Exit.setFont(font_Exit);
     text_Exit.setString("3. Exiting the program");
     text_Exit.setCharacterSize(42);
@@ -62,10 +62,10 @@ int main() {
         sf::Vector2f(position_Exit[0], position_Exit[1] + 20));
     // loading textures
     sf::Texture texture1;
-    texture1.loadFromFile("textures/texture1.png");
+    texture1.loadFromFile("../textures/texture1.png");
     texture1.setSmooth(true);
     sf::Texture texture2;
-    texture2.loadFromFile("textures/texture2.png");
+    texture2.loadFromFile("../textures/texture2.png");
     texture2.setSmooth(true);
 
     int position_cube1[] = {350, 250};
