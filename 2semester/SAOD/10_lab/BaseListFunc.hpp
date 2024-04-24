@@ -63,7 +63,7 @@ class SinglyLinkedList {
     }
   }
 
-  void clear() {
+  [[noreturn]] void clear() {
     while (!isEmpty()) removeFront();
   }
 };
