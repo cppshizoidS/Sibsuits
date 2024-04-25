@@ -5,16 +5,13 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
-#include <random>
 
 template <typename T>
-struct Node
-{
+struct Node {
   T data;
   Node<T> *next;
 
-  Node(T newData, Node<T> *nextNode)
-  {
+  Node(T newData, Node<T> *nextNode) {
     data = newData;
     next = nextNode;
   }

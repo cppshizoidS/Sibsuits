@@ -6,57 +6,44 @@
 #define QUEUE_HPP
 
 #include <iostream>
+#include <random>
 #include "Node.hpp"
 
 template <typename T>
-class Queue
-{
+class Queue {
  private:
   Node<T> *front;
   Node<T> *rear;
   int sizeOfQueue;
 
  public:
-  Queue()
-  {
+  Queue() {
     front = nullptr;
     rear = nullptr;
   }
 
-  [[noreturn]] ~Queue()
-  {
-    while (size())
-      pop();
+  [[noreturn]] ~Queue() {
+    while (size()) pop();
   }
 
-  bool isEmpty()
-  {
-    return front == nullptr;
-  }
+  bool isEmpty() { return front == nullptr; }
 
-  void push(T data)
-  {
+  void push(T data) {
     Node<T> *newNode = new Node<T>(data, nullptr);
     newNode->data = data;
     newNode->next = nullptr;
     sizeOfQueue++;
-    if (isEmpty())
-    {
+    if (isEmpty()) {
       front = newNode;
       rear = newNode;
-    }
-    else
-    {
+    } else {
       rear->next = newNode;
       rear = newNode;
     }
   }
 
-  void pop()
-  {
-    if (!isEmpty())
-    {
-
+  void pop() {
+    if (!isEmpty()) {
       Node<T> *temp = front;
       front = front->next;
       sizeOfQueue--;
@@ -64,27 +51,18 @@ class Queue
     }
   }
 
-  int peek()
-  {
-    if (!isEmpty())
-    {
+  int peek() {
+    if (!isEmpty()) {
       return front->data;
     }
   }
 
-  int size()
-  {
-    return sizeOfQueue;
-  }
+  int size() { return sizeOfQueue; }
 
-  void printQueue()
-  {
-    if (!isEmpty())
-    {
-
+  void printQueue() {
+    if (!isEmpty()) {
       Node<T> *temp = front;
-      while (temp != nullptr)
-      {
+      while (temp != nullptr) {
         std::cout << temp->data << " ";
         temp = temp->next;
       }
@@ -93,18 +71,14 @@ class Queue
     return;
   }
 
-  void fill_inc(int size)
-  {
-    for (int i = 0; i < size; i++)
-    {
+  void fill_inc(int size) {
+    for (int i = 0; i < size; i++) {
       push(i);
     }
   }
 
-  void fill_dec(int size)
-  {
-    for (int i = size - 1; i >= 0; i--)
-    {
+  void fill_dec(int size) {
+    for (int i = size - 1; i >= 0; i--) {
       push(i);
     }
   }
@@ -112,21 +86,19 @@ class Queue
   void fill_rand(int size) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, 99); // Range from 0 to 99
+    std::uniform_int_distribution<int> dis(0, 99);  // Range from 0 to 99
 
     for (int i = 0; i < size; i++) {
-      push(dis(gen)); // Assuming push is a function to add elements to some data structure
+      push(dis(gen));  // Assuming push is a function to add elements to some
+                       // data structure
     }
   }
 
-  T check_sum()
-  {
+  T check_sum() {
     T sum = 0;
-    if (!isEmpty())
-    {
+    if (!isEmpty()) {
       Node<T> *temp = front;
-      while (temp != nullptr)
-      {
+      while (temp != nullptr) {
         sum += temp->data;
         temp = temp->next;
       }
@@ -134,20 +106,14 @@ class Queue
     return sum;
   }
 
-  T check_series()
-  {
+  T check_series() {
     T k = 1;
-    if (!isEmpty())
-    {
+    if (!isEmpty()) {
       Node<T> *temp = front;
-      while (temp->next != nullptr)
-      {
-        if (temp->data <= temp->next->data)
-        {
+      while (temp->next != nullptr) {
+        if (temp->data <= temp->next->data) {
           temp = temp->next;
-        }
-        else
-        {
+        } else {
           k++;
           temp = temp->next;
         }
@@ -156,10 +122,8 @@ class Queue
     return k;
   }
 
-  void clear()
-  {
-    while (!isEmpty())
-      pop();
+  void clear() {
+    while (!isEmpty()) pop();
   }
 };
 #endif

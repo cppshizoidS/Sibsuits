@@ -6,8 +6,7 @@
 #define LIST_HPP
 
 #include <iostream>
-
-#include "BaseListFunc.hpp"
+#include <random>
 #include "Node.hpp"
 
 template <typename T>

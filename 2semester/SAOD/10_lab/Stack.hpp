@@ -6,6 +6,7 @@
 #define STACK_HPP
 
 #include <iostream>
+#include <random>
 #include "Node.hpp"
 
 template <typename T>
@@ -81,7 +82,7 @@ class Stack
   void printStack()
   {
     Node<T> *currentNode = currentTop;
-    while (currentNode != NULL)
+    while (currentNode != nullptr)
     {
       std::cout << currentNode->data << " ";
       currentNode = currentNode->next;
@@ -93,7 +94,7 @@ class Stack
   {
     Node<T> *currentNode = currentTop;
     T sum = 0;
-    while (currentNode != NULL)
+    while (currentNode != nullptr)
     {
       sum += currentNode->data;
       currentNode = currentNode->next;
@@ -105,7 +106,7 @@ class Stack
   {
     T k = 1;
     Node<T> *currentNode = currentTop;
-    while (currentNode != NULL && currentNode->next != NULL)
+    while (currentNode != nullptr && currentNode->next != nullptr)
     {
       if (currentNode->data < currentNode->next->data)
       {
