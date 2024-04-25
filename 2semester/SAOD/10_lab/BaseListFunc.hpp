@@ -7,7 +7,6 @@
 
 #include <iostream>
 
-#include "List.hpp"
 #include "Node.hpp"
 
 namespace list_functions {
@@ -67,6 +66,6 @@ class SinglyLinkedList {
     while (!isEmpty()) removeFront();
   }
 };
-}
+}  // namespace list_functions
 
 #endif

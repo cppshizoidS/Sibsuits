@@ -59,6 +59,12 @@ auto main() -> int {
   std::cout << "List elements: ";
   list.print();
 
+  std::cout << "Sorting list using digital sort...\n";
+  list.digitalSort(3);
+
+  std::cout << "List elements after sorting: ";
+  list.print();
+
   std::cout << "Checksum: " << list.check_sum() << std::endl;
 
   std::cout << "Number of series: " << list.countSeries() << std::endl;

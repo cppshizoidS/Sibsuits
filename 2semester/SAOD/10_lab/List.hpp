@@ -6,19 +6,20 @@
 #define LIST_HPP
 
 #include <iostream>
+
+#include "BaseListFunc.hpp"
 #include "Node.hpp"
 
 template <typename T>
 class LinkedList {
  private:
   Node<T> *head;
+  int sizeOfList;
 
  public:
   LinkedList() : head(nullptr) {}
 
-  ~LinkedList() {
-    clear();
-  }
+  ~LinkedList() { clear(); }
 
   // Function to print the elements of the list
   void print() {
@@ -70,25 +71,22 @@ class LinkedList {
   void fill_rand(int size) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, 99); // Range from 0 to 99
+    std::uniform_int_distribution<int> dis(0, 99);  // Range from 0 to 99
 
     for (int i = 0; i < size; i++) {
-      pushFront(dis(gen)); // Assuming push is a function to add elements to some data structure
+      pushFront(dis(gen));  // Assuming push is a function to add elements to
+                            // some data structure
     }
   }
 
-  void fill_inc(int size)
-  {
-    for (int i = 0; i < size; i++)
-    {
+  void fill_inc(int size) {
+    for (int i = 0; i < size; i++) {
       pushFront(i);
     }
   }
 
-  void fill_dec(int size)
-  {
-    for (int i = size - 1; i >= 0; i--)
-    {
+  void fill_dec(int size) {
+    for (int i = size - 1; i >= 0; i--) {
       pushFront(i);
     }
   }
@@ -122,8 +120,60 @@ class LinkedList {
   }
 
   // Function to add a new node to the front of the list
-  void pushFront(T newData) {
-    head = new Node<T>(newData, head);
+  void pushFront(T newData) { head = new Node<T>(newData, head); }
+
+  void merge(LinkedList<T> &otherList) {
+    Node<T> *temp1 = head;
+    Node<T> *temp2 = otherList.head;
+    LinkedList<T> mergedList;
+
+    while (temp1 != nullptr && temp2 != nullptr) {
+      if (temp1->data < temp2->data) {
+        mergedList.pushFront(temp1->data);
+        temp1 = temp1->next;
+      } else {
+        mergedList.pushFront(temp2->data);
+        temp2 = temp2->next;
+      }
+    }
+
+    while (temp1 != nullptr) {
+      mergedList.pushFront(temp1->data);
+      temp1 = temp1->next;
+    }
+
+    while (temp2 != nullptr) {
+      mergedList.pushFront(temp2->data);
+      temp2 = temp2->next;
+    }
+
+    head = mergedList.head;
+    sizeOfList = mergedList.size();
+  }
+
+  void digitalSort(int maxDigits) {
+    LinkedList<T> buckets[10];
+    int divisor = 1;
+    int digit;
+
+    for (int i = 0; i < maxDigits; i++) {
+      Node<T> *temp = head;
+      while (temp != nullptr) {
+        digit = (temp->data / divisor) % 10;
+        buckets[digit].pushFront(temp->data);
+        temp = temp->next;
+      }
+
+      head = nullptr;
+      for (int j = 0; j < 10; j++) {
+        Node<T> *bucketHead = buckets[j].head;
+        while (bucketHead != nullptr) {
+          pushFront(bucketHead->data);
+          bucketHead = bucketHead->next;
+        }
+      }
+      divisor *= 10;
+    }
   }
 };
 #endif
