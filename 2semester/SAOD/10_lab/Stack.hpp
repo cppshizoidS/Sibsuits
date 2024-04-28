@@ -5,7 +5,6 @@
 #ifndef STACK_HPP
 #define STACK_HPP
 
-#include <iostream>
 #include <random>
 #include <print>
 #include "Node.hpp"

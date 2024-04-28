@@ -5,7 +5,6 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <iostream>
 #include <random>
 #include <print> // Add this line for C++23 std::print
 #include "Node.hpp"
