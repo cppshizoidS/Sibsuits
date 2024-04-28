@@ -6,6 +6,7 @@
 #define LIST_FUNCTIONS_HPP
 
 #include <iostream>
+#include <print>
 
 #include "Node.hpp"
 
@@ -55,10 +56,10 @@ class SinglyLinkedList {
     if (!isEmpty()) {
       Node<T> *temp = head;
       while (temp != nullptr) {
-        std::cout << temp->data << " ";
+        std::print("{} ", temp->data);
         temp = temp->next;
       }
-      std::cout << "\n";
+      std::println("\n");
     }
   }
 

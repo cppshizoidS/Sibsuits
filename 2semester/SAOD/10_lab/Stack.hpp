@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <random>
+#include <print>
 #include "Node.hpp"
 
 template <typename T>
@@ -84,10 +85,10 @@ class Stack
     Node<T> *currentNode = currentTop;
     while (currentNode != nullptr)
     {
-      std::cout << currentNode->data << " ";
+      std::print("{} ", currentNode->data);
       currentNode = currentNode->next;
     }
-    std::cout << std::endl;
+    std::print("\n");
   }
 
   T check_sum()

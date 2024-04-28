@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <random>
+#include <print> // Add this line for C++23 std::print
 #include "Node.hpp"
 
 template <typename T>
@@ -24,10 +25,10 @@ class LinkedList {
   void print() {
     Node<T> *current = head;
     while (current) {
-      std::cout << current->data << " ";
+      std::print("{} ", current->data); // Updated this line
       current = current->next;
     }
-    std::cout << std::endl;
+    std::print("\n"); // Updated this line
   }
 
   // Function to calculate the checksum of the elements in the list
@@ -93,7 +94,7 @@ class LinkedList {
   // Function to print elements of the list recursively in forward order
   void printRecursiveForward(Node<T> *current) {
     if (current) {
-      std::cout << current->data << " ";
+      std::print("{} ", current->data); // Updated this line
       printRecursiveForward(current->next);
     }
   }
@@ -102,20 +103,20 @@ class LinkedList {
   void printRecursiveReverse(Node<T> *current) {
     if (current) {
       printRecursiveReverse(current->next);
-      std::cout << current->data << " ";
+      std::print("{} ", current->data); // Updated this line
     }
   }
 
   // Wrapper function to print elements of the list recursively in forward order
   void printRecursiveForward() {
     printRecursiveForward(head);
-    std::cout << std::endl;
+    std::print("\n"); // Updated this line
   }
 
   // Wrapper function to print elements of the list recursively in reverse order
   void printRecursiveReverse() {
     printRecursiveReverse(head);
-    std::cout << std::endl;
+    std::print("\n"); // Updated this line
   }
 
   // Function to add a new node to the front of the list
@@ -164,8 +165,8 @@ class LinkedList {
       }
 
       head = nullptr;
-      for (int j = 0; j < 10; j++) {
-        Node<T> *bucketHead = buckets[j].head;
+      for (auto & bucket : buckets) {
+        Node<T> *bucketHead = bucket.head;
         while (bucketHead != nullptr) {
           pushFront(bucketHead->data);
           bucketHead = bucketHead->next;

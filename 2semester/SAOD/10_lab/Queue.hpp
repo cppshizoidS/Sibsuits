@@ -5,7 +5,7 @@
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
-#include <iostream>
+#include <print>
 #include <random>
 #include "Node.hpp"
 
@@ -63,12 +63,11 @@ class Queue {
     if (!isEmpty()) {
       Node<T> *temp = front;
       while (temp != nullptr) {
-        std::cout << temp->data << " ";
+        std::print("{} ", temp->data);
         temp = temp->next;
       }
-      std::cout << "\n";
+      std::print("\n");
     }
-    return;
   }
 
   void fill_inc(int size) {
