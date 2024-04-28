@@ -10,6 +10,8 @@
 #include <print>
 #include "Node.hpp"
 
+namespace container {
+
 template <typename T>
 class Stack
 {
@@ -18,26 +20,23 @@ class Stack
   Node<T> *currentTop;
 
  public:
-  Stack()
-  {
+  [[maybe_unused]] constexpr  Stack() noexcept {
     sizeOfStack = 0;
     currentTop = nullptr;
   }
 
-  [[noreturn]] ~Stack()
-  {
+  constexpr  ~Stack() noexcept {
     while (size())
       pop();
   }
 
-  void push(T element)
-  {
+  [[maybe_unused]] constexpr void push(T element) noexcept {
     auto *node = new Node<T>(element, currentTop);
     currentTop = node;
     sizeOfStack++;
   }
 
-  void pop()
+  [[maybe_unused]] constexpr  void pop() noexcept
   {
     Node<T> *node = currentTop;
     currentTop = currentTop->next;
@@ -45,17 +44,17 @@ class Stack
     delete node;
   }
 
-  T top()
+  [[maybe_unused]] constexpr  T top() noexcept
   {
     return currentTop->data;
   }
 
-  int size()
+  [[maybe_unused]] constexpr int size() noexcept
   {
     return sizeOfStack;
   }
 
-  void fill_rand(int size) {
+  [[maybe_unused]] constexpr  void fill_rand(int size) noexcept {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(0, 99); // Range from 0 to 99
@@ -64,7 +63,7 @@ class Stack
       push(dis(gen)); // Assuming push is a function to add elements to some data structure
     }
   }
-  void fill_inc(int size)
+  [[maybe_unused]] constexpr void fill_inc(int size) noexcept
   {
     for (int i = 0; i < size; i++)
     {
@@ -72,7 +71,7 @@ class Stack
     }
   }
 
-  void fill_dec(int size)
+  [[maybe_unused]] constexpr void fill_dec(int size) noexcept
   {
     for (int i = size - 1; i >= 0; i--)
     {
@@ -80,7 +79,7 @@ class Stack
     }
   }
 
-  void printStack()
+  [[maybe_unused]] constexpr void printStack() noexcept
   {
     Node<T> *currentNode = currentTop;
     while (currentNode != nullptr)
@@ -91,7 +90,7 @@ class Stack
     std::print("\n");
   }
 
-  T check_sum()
+  [[maybe_unused]] constexpr T check_sum() noexcept
   {
     Node<T> *currentNode = currentTop;
     T sum = 0;
@@ -103,7 +102,7 @@ class Stack
     return sum;
   }
 
-  T check_series()
+  [[maybe_unused]] constexpr T check_series() noexcept
   {
     T k = 1;
     Node<T> *currentNode = currentTop;
@@ -122,10 +121,12 @@ class Stack
 
     return k;
   }
-  void clear()
+
+  [[maybe_unused]] constexpr void clear() noexcept
   {
     while (size())
       pop();
   }
 };
+}
 #endif

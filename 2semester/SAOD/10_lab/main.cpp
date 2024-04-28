@@ -4,9 +4,9 @@
 
 auto main() -> int {
   const int FILL_SIZE = 50;
-  Stack<int> stack;
-  Queue<int> queue;
-  LinkedList<int> list;
+  container::Stack<int> stack;
+  container::Queue<int> queue;
+  container::LinkedList<int> list;
 
   std::print("Dec stack: ");
   stack.fill_dec(FILL_SIZE);

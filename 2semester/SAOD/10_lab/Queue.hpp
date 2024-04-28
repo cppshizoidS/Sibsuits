@@ -9,27 +9,29 @@
 #include <random>
 #include "Node.hpp"
 
+namespace container {
+
 template <typename T>
 class Queue {
  private:
   Node<T> *front;
   Node<T> *rear;
-  int sizeOfQueue;
+  int sizeOfQueue{};
 
  public:
-  Queue() {
+  [[maybe_unused]] constexpr Queue() {
     front = nullptr;
     rear = nullptr;
   }
 
-  [[noreturn]] ~Queue() {
+  constexpr ~Queue() {
     while (size()) pop();
   }
 
-  bool isEmpty() { return front == nullptr; }
+  [[maybe_unused]] constexpr bool isEmpty() noexcept { return front == nullptr; }
 
-  void push(T data) {
-    Node<T> *newNode = new Node<T>(data, nullptr);
+  [[maybe_unused]] constexpr void push(T data) noexcept {
+    auto *newNode = new Node<T>(data, nullptr);
     newNode->data = data;
     newNode->next = nullptr;
     sizeOfQueue++;
@@ -42,7 +44,7 @@ class Queue {
     }
   }
 
-  void pop() {
+  [[maybe_unused]] constexpr void pop() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = front;
       front = front->next;
@@ -51,15 +53,15 @@ class Queue {
     }
   }
 
-  int peek() {
+  [[maybe_unused]] constexpr int peek() noexcept {
     if (!isEmpty()) {
       return front->data;
     }
   }
 
-  int size() { return sizeOfQueue; }
+  [[maybe_unused]] constexpr int size() noexcept { return sizeOfQueue; }
 
-  void printQueue() {
+  [[maybe_unused]] constexpr void printQueue() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = front;
       while (temp != nullptr) {
@@ -70,19 +72,19 @@ class Queue {
     }
   }
 
-  void fill_inc(int size) {
+  [[maybe_unused]] constexpr void fill_inc(int size) noexcept {
     for (int i = 0; i < size; i++) {
       push(i);
     }
   }
 
-  void fill_dec(int size) {
+  [[maybe_unused]] constexpr void fill_dec(int size) noexcept {
     for (int i = size - 1; i >= 0; i--) {
       push(i);
     }
   }
 
-  void fill_rand(int size) {
+  [[maybe_unused]] constexpr void fill_rand(int size) noexcept {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(0, 99);  // Range from 0 to 99
@@ -93,7 +95,7 @@ class Queue {
     }
   }
 
-  T check_sum() {
+  [[maybe_unused]] constexpr T check_sum() noexcept {
     T sum = 0;
     if (!isEmpty()) {
       Node<T> *temp = front;
@@ -105,7 +107,7 @@ class Queue {
     return sum;
   }
 
-  T check_series() {
+  [[maybe_unused]] constexpr T check_series() noexcept {
     T k = 1;
     if (!isEmpty()) {
       Node<T> *temp = front;
@@ -121,8 +123,9 @@ class Queue {
     return k;
   }
 
-  void clear() {
+  [[maybe_unused]] constexpr void clear() noexcept {
     while (!isEmpty()) pop();
   }
 };
+}
 #endif

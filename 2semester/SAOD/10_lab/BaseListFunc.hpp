@@ -12,30 +12,30 @@
 
 namespace list_functions {
 template <typename T>
-class SinglyLinkedList {
+class [[maybe_unused]] SinglyLinkedList {
  private:
   Node<T> *head;
   int sizeOfList;
 
  public:
-  SinglyLinkedList() {
+  constexpr SinglyLinkedList() noexcept  {
     head = nullptr;
     sizeOfList = 0;
   }
 
-  ~SinglyLinkedList() { clear(); }
+  constexpr ~SinglyLinkedList() noexcept  { clear(); }
 
-  bool isEmpty() { return head == nullptr; }
+  constexpr bool isEmpty() noexcept  { return head == nullptr; }
 
-  void insertFront(T data) {
-    Node<T> *newNode = new Node<T>(data, nullptr);
+  [[maybe_unused]] constexpr void insertFront(T data) noexcept  {
+    auto *newNode = new Node<T>(data, nullptr);
     newNode->data = data;
     newNode->next = head;
     head = newNode;
     sizeOfList++;
   }
 
-  void removeFront() {
+  [[maybe_unused]] constexpr void removeFront() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = head;
       head = head->next;
@@ -44,15 +44,15 @@ class SinglyLinkedList {
     }
   }
 
-  T getFront() {
+  [[maybe_unused]] constexpr T getFront() noexcept {
     if (!isEmpty()) {
       return head->data;
     }
   }
 
-  int size() { return sizeOfList; }
+  [[maybe_unused]] constexpr int size() noexcept { return sizeOfList; }
 
-  void printList() {
+  [[maybe_unused]] constexpr void printList() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = head;
       while (temp != nullptr) {
@@ -63,7 +63,7 @@ class SinglyLinkedList {
     }
   }
 
-  [[noreturn]] void clear() {
+  [[noreturn]] void clear() noexcept {
     while (!isEmpty()) removeFront();
   }
 };

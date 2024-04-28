@@ -16,4 +16,4 @@ struct Node {
     next = nextNode;
   }
 };
-#endif  // INC_10_LAB_NODE_HPP
+#endif  // NODE_HPP
