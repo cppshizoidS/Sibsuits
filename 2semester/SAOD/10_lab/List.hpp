@@ -11,18 +11,31 @@
 
 namespace container {
 
+/**
+ * @brief A class representing a linked list.
+ *
+ * @tparam T The type of data stored in the list.
+ */
 template <typename T>
 class LinkedList {
  private:
-  Node<T> *head;
-  [[maybe_unused]] int sizeOfList{};
+  Node<T> *head; ///< Pointer to the head of the list.
+  int sizeOfList{}; ///< Size of the list.
 
  public:
+  /**
+   * @brief Default constructor.
+   */
   constexpr LinkedList() : head(nullptr) {}
 
+  /**
+   * @brief Destructor.
+   */
   constexpr ~LinkedList() { clear(); }
 
-  // Function to print the elements of the list
+  /**
+   * @brief Function to print the elements of the list.
+   */
   [[maybe_unused]] constexpr void print() noexcept {
     Node<T> *current = head;
     while (current) {
@@ -32,7 +45,11 @@ class LinkedList {
     std::print("\n");  // Updated this line
   }
 
-  // Function to calculate the checksum of the elements in the list
+  /**
+   * @brief Function to calculate the checksum of the elements in the list.
+   *
+   * @return The checksum of the elements in the list.
+   */
   [[maybe_unused]] constexpr int check_sum() noexcept {
     int sum = 0;
     Node<T> *current = head;
@@ -43,7 +60,11 @@ class LinkedList {
     return sum;
   }
 
-  // Function to count the number of series in the list
+  /**
+   * @brief Function to count the number of series in the list.
+   *
+   * @return The number of series in the list.
+   */
   [[maybe_unused]] constexpr int countSeries() noexcept {
     int seriesCount = 0;
     Node<T> *current = head;
@@ -60,7 +81,9 @@ class LinkedList {
     return seriesCount;
   }
 
-  // Function to delete all elements from the list
+  /**
+   * @brief Function to delete all elements from the list.
+   */
   [[maybe_unused]] constexpr void clear() noexcept {
     while (head) {
       Node<T> *temp = head;
@@ -69,6 +92,11 @@ class LinkedList {
     }
   }
 
+  /**
+   * @brief Function to fill the list with random numbers.
+   *
+   * @param size The size of the list.
+   */
   [[maybe_unused]] constexpr void fill_rand(int size) noexcept {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -80,19 +108,33 @@ class LinkedList {
     }
   }
 
+  /**
+   * @brief Function to fill the list with incrementing numbers.
+   *
+   * @param size The size of the list.
+   */
   [[maybe_unused]] constexpr void fill_inc(int size) noexcept {
     for (int i = 0; i < size; i++) {
       pushFront(i);
     }
   }
 
+  /**
+   * @brief Function to fill the list with decrementing numbers.
+   *
+   * @param size The size of the list.
+   */
   [[maybe_unused]] constexpr void fill_dec(int size) noexcept {
     for (int i = size - 1; i >= 0; i--) {
       pushFront(i);
     }
   }
 
-  // Function to print elements of the list recursively in forward order
+  /**
+   * @brief Function to print elements of the list recursively in forward order.
+   *
+   * @param current The current node being processed.
+   */
   [[maybe_unused]] constexpr void printRecursiveForward(Node<T> *current) noexcept {
     if (current) {
       std::print("{} ", current->data);  // Updated this line
@@ -100,7 +142,11 @@ class LinkedList {
     }
   }
 
-  // Function to print elements of the list recursively in reverse order
+  /**
+   * @brief Function to print elements of the list recursively in reverse order.
+   *
+   * @param current The current node being processed.
+   */
   [[maybe_unused]] constexpr void printRecursiveReverse(Node<T> *current) noexcept {
     if (current) {
       printRecursiveReverse(current->next);
@@ -108,21 +154,34 @@ class LinkedList {
     }
   }
 
-  // Wrapper function to print elements of the list recursively in forward order
+  /**
+   * @brief Wrapper function to print elements of the list recursively in forward order.
+   */
   [[maybe_unused]] constexpr void printRecursiveForward() noexcept {
     printRecursiveForward(head);
     std::print("\n");  // Updated this line
   }
 
-  // Wrapper function to print elements of the list recursively in reverse order
+  /**
+   * @brief Wrapper function to print elements of the list recursively in reverse order.
+   */
   [[maybe_unused]] constexpr void printRecursiveReverse() noexcept {
     printRecursiveReverse(head);
     std::print("\n");  // Updated this line
   }
 
-  // Function to add a new node to the front of the list
+  /**
+   * @brief Function to add a new node to the front of the list.
+   *
+   * @param newData The data to be added to the new node.
+   */
   [[maybe_unused]] constexpr void pushFront(T newData) noexcept { head = new Node<T>(newData, head); }
 
+  /**
+   * @brief Function to merge another list into the current list.
+   *
+   * @param otherList The list to be merged into the current list.
+   */
   [[maybe_unused]] constexpr void merge(LinkedList<T> &otherList) noexcept {
     Node<T> *temp1 = head;
     Node<T> *temp2 = otherList.head;
@@ -152,6 +211,11 @@ class LinkedList {
     sizeOfList = mergedList.size();
   }
 
+  /**
+   * @brief Function to perform digital sort on the list.
+   *
+   * @param maxDigits The maximum number of digits in the elements of the list.
+   */
   [[maybe_unused]] constexpr void digitalSort(int maxDigits) noexcept {
     LinkedList<T> buckets[10];
     int divisor = 1;

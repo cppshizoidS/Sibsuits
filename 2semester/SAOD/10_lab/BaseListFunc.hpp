@@ -10,22 +10,44 @@
 #include "Node.hpp"
 
 namespace list_functions {
+
+/**
+ * @brief A singly linked list implementation.
+ *
+ * @tparam T The type of data stored in the list.
+ */
 template <typename T>
 class [[maybe_unused]] SinglyLinkedList {
  private:
-  Node<T> *head;
-  int sizeOfList;
+  Node<T> *head; /**< Pointer to the head of the list. */
+  int sizeOfList; /**< The size of the list. */
 
  public:
+  /**
+   * @brief Constructs a new Singly Linked List object.
+   */
   constexpr SinglyLinkedList() noexcept  {
     head = nullptr;
     sizeOfList = 0;
   }
 
+  /**
+   * @brief Destroys the Singly Linked List object and deallocates memory.
+   */
   constexpr ~SinglyLinkedList() noexcept  { clear(); }
 
+  /**
+   * @brief Checks if the list is empty.
+   *
+   * @return true if the list is empty, false otherwise.
+   */
   constexpr bool isEmpty() noexcept  { return head == nullptr; }
 
+  /**
+   * @brief Inserts an element at the front of the list.
+   *
+   * @param data The data to be inserted.
+   */
   [[maybe_unused]] constexpr void insertFront(T data) noexcept  {
     auto *newNode = new Node<T>(data, nullptr);
     newNode->data = data;
@@ -34,6 +56,9 @@ class [[maybe_unused]] SinglyLinkedList {
     sizeOfList++;
   }
 
+  /**
+   * @brief Removes the element at the front of the list.
+   */
   [[maybe_unused]] constexpr void removeFront() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = head;
@@ -43,14 +68,27 @@ class [[maybe_unused]] SinglyLinkedList {
     }
   }
 
+  /**
+   * @brief Gets the data of the element at the front of the list.
+   *
+   * @return The data of the element at the front.
+   */
   [[maybe_unused]] constexpr T getFront() noexcept {
     if (!isEmpty()) {
       return head->data;
     }
   }
 
+  /**
+   * @brief Gets the size of the list.
+   *
+   * @return The size of the list.
+   */
   [[maybe_unused]] constexpr int size() noexcept { return sizeOfList; }
 
+  /**
+   * @brief Prints the elements of the list.
+   */
   [[maybe_unused]] constexpr void printList() noexcept {
     if (!isEmpty()) {
       Node<T> *temp = head;
@@ -62,6 +100,9 @@ class [[maybe_unused]] SinglyLinkedList {
     }
   }
 
+  /**
+   * @brief Clears the list by removing all elements.
+   */
   [[noreturn]] void clear() noexcept {
     while (!isEmpty()) removeFront();
   }
