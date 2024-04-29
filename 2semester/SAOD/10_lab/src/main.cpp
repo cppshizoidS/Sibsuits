@@ -1,7 +1,11 @@
-#include "List.hpp"
-#include "Queue.hpp"
-#include "Stack.hpp"
+#include "../include/List.hpp"
+#include "../include/Queue.hpp"
+#include "../include/Stack.hpp"
 
+/**
+ * @brief Точка входа для приложения.
+ * @return 0.
+ */
 auto main() -> int {
   const int FILL_SIZE = 50;
   container::Stack<int> stack;
@@ -48,7 +52,7 @@ auto main() -> int {
   int queueseries = queue.check_series();
   std::print("Series rand queue: {}\n", queueseries);
 
-  list.pushFront(3);
+  list.pushFront('s');
   list.pushFront(2);
   list.pushFront(2);
   list.pushFront(1);

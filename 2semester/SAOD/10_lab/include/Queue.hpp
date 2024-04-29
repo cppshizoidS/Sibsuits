@@ -1,7 +1,7 @@
 //
 // Created by cppshizoid on 4/23/24.
 //
-
+// Queue.hpp
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
@@ -13,15 +13,14 @@ namespace container {
 
 /**
  * @brief A queue data structure implementation.
- *
  * @tparam T The type of data held in the queue.
  */
 template <typename T>
 class Queue {
  private:
-  Node<T> *front; /**< Pointer to the front of the queue. */
-  Node<T> *rear; /**< Pointer to the rear of the queue. */
-  int sizeOfQueue{}; /**< Size of the queue. */
+  Node<T> *front; ///< Pointer to the front of the queue.
+  Node<T> *rear; ///< Pointer to the rear of the queue.
+  int sizeOfQueue{}; ///< Size of the queue.
 
  public:
   /**
@@ -41,14 +40,12 @@ class Queue {
 
   /**
    * @brief Check if the queue is empty.
-   *
    * @return true if the queue is empty, false otherwise.
    */
   [[maybe_unused]] constexpr bool isEmpty() noexcept { return front == nullptr; }
 
   /**
    * @brief Add an element to the rear of the queue.
-   *
    * @param data The data to be added to the queue.
    */
   [[maybe_unused]] constexpr void push(T data) noexcept {
@@ -79,7 +76,6 @@ class Queue {
 
   /**
    * @brief Get the element at the front of the queue without removing it.
-   *
    * @return The element at the front of the queue.
    */
   [[maybe_unused]] constexpr int peek() noexcept {
@@ -90,7 +86,6 @@ class Queue {
 
   /**
    * @brief Get the size of the queue.
-   *
    * @return The size of the queue.
    */
   [[maybe_unused]] constexpr int size() noexcept { return sizeOfQueue; }
@@ -111,7 +106,6 @@ class Queue {
 
   /**
    * @brief Fill the queue with increasing integers starting from 0.
-   *
    * @param size The number of elements to fill the queue with.
    */
   [[maybe_unused]] constexpr void fill_inc(int size) noexcept {
@@ -122,7 +116,6 @@ class Queue {
 
   /**
    * @brief Fill the queue with decreasing integers starting from (size - 1).
-   *
    * @param size The number of elements to fill the queue with.
    */
   [[maybe_unused]] constexpr void fill_dec(int size) noexcept {
@@ -133,7 +126,6 @@ class Queue {
 
   /**
    * @brief Fill the queue with random integers in the range [0, 99].
-   *
    * @param size The number of elements to fill the queue with.
    */
   [[maybe_unused]] constexpr void fill_rand(int size) noexcept {
@@ -149,7 +141,6 @@ class Queue {
 
   /**
    * @brief Calculate the sum of all elements in the queue.
-   *
    * @return The sum of all elements.
    */
   [[maybe_unused]] constexpr T check_sum() noexcept {
@@ -166,7 +157,6 @@ class Queue {
 
   /**
    * @brief Check how many increasing series are in the queue.
-   *
    * @return The number of increasing series.
    */
   [[maybe_unused]] constexpr T check_series() noexcept {

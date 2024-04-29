@@ -1,7 +1,7 @@
 //
 // Created by cppshizoid on 4/23/24.
 //
-
+// BaseListFunc.hpp
 #ifndef LIST_FUNCTIONS_HPP
 #define LIST_FUNCTIONS_HPP
 
@@ -19,8 +19,8 @@ namespace list_functions {
 template <typename T>
 class [[maybe_unused]] SinglyLinkedList {
  private:
-  Node<T> *head; /**< Pointer to the head of the list. */
-  int sizeOfList; /**< The size of the list. */
+  Node<T> *head; ///< Pointer to the head of the list.
+  int sizeOfList; ///< The size of the list.
 
  public:
   /**

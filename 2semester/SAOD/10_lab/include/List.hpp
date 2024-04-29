@@ -1,12 +1,12 @@
 //
 // Created by cppshizoid on 4/23/24.
 //
-
+// List.hpp
 #ifndef LIST_HPP
 #define LIST_HPP
 
 #include <random>
-#include <print> // Add this line for C++23 std::print
+#include <print>
 #include "Node.hpp"
 
 namespace container {
@@ -39,10 +39,10 @@ class LinkedList {
   [[maybe_unused]] constexpr void print() noexcept {
     Node<T> *current = head;
     while (current) {
-      std::print("{} ", current->data);  // Updated this line
+      std::print("{} ", current->data);
       current = current->next;
     }
-    std::print("\n");  // Updated this line
+    std::print("\n");
   }
 
   /**
@@ -137,7 +137,7 @@ class LinkedList {
    */
   [[maybe_unused]] constexpr void printRecursiveForward(Node<T> *current) noexcept {
     if (current) {
-      std::print("{} ", current->data);  // Updated this line
+      std::print("{} ", current->data);
       printRecursiveForward(current->next);
     }
   }
@@ -150,7 +150,7 @@ class LinkedList {
   [[maybe_unused]] constexpr void printRecursiveReverse(Node<T> *current) noexcept {
     if (current) {
       printRecursiveReverse(current->next);
-      std::print("{} ", current->data);  // Updated this line
+      std::print("{} ", current->data);
     }
   }
 
@@ -159,7 +159,7 @@ class LinkedList {
    */
   [[maybe_unused]] constexpr void printRecursiveForward() noexcept {
     printRecursiveForward(head);
-    std::print("\n");  // Updated this line
+    std::print("\n");
   }
 
   /**

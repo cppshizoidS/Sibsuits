@@ -1,7 +1,7 @@
 //
 // Created by cppshizoid on 4/23/24.
 //
-
+// Node.hpp
 #ifndef NODE_HPP
 #define NODE_HPP
 
