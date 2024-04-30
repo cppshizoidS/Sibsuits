@@ -10,6 +10,93 @@
 #include "Node.hpp"
 
 namespace container {
+
+// Iterator for Stack class (forward iteration)
+template <typename T>
+class StackIterator {
+ private:
+  Node<T>* currentNode;
+
+ public:
+  using iterator_category = std::forward_iterator_tag;
+  using value_type = T;
+  using difference_type = std::ptrdiff_t;
+  using pointer = T*;
+  using reference = T&;
+
+  explicit StackIterator(Node<T>* node) : currentNode(node) {}
+
+  StackIterator& operator++() {
+    currentNode = currentNode->next;
+    return *this;
+  }
+
+  StackIterator operator++(int) {
+    StackIterator temp = *this;
+    ++(*this);
+    return temp;
+  }
+
+  reference operator*() const {
+    return currentNode->data;
+  }
+
+  pointer operator->() const {
+    return &(currentNode->data);
+  }
+
+  bool operator==(const StackIterator& other) const {
+    return currentNode == other.currentNode;
+  }
+
+  bool operator!=(const StackIterator& other) const {
+    return *this != other;
+  }
+};
+
+// Iterator for Stack class (reverse iteration)
+template <typename T>
+class StackReverseIterator {
+ private:
+  Node<T>* currentNode;
+
+ public:
+  using iterator_category = std::bidirectional_iterator_tag;
+  using value_type = T;
+  using difference_type = std::ptrdiff_t;
+  using pointer = T*;
+  using reference = T&;
+
+  explicit StackReverseIterator(Node<T>* node) : currentNode(node) {}
+
+  StackReverseIterator& operator++() {
+    currentNode = currentNode->prev;
+    return *this;
+  }
+
+  StackReverseIterator operator++(int) {
+    StackReverseIterator temp = *this;
+    ++(*this);
+    return temp;
+  }
+
+  reference operator*() const {
+    return currentNode->data;
+  }
+
+  pointer operator->() const {
+    return &(currentNode->data);
+  }
+
+  bool operator==(const StackReverseIterator& other) const {
+    return currentNode == other.currentNode;
+  }
+
+  bool operator!=(const StackReverseIterator& other) const {
+    return *this != other;
+  }
+};
+
 /**
  * @brief A stack data structure implementation.
  *

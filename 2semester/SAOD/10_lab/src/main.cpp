@@ -11,6 +11,7 @@ auto main() -> int {
   container::Stack<int> stack;
   container::Queue<int> queue;
   container::LinkedList<int> list;
+  container::LinkedList<int> Mlist;
 
   std::print("Dec stack: ");
   stack.fill_dec(FILL_SIZE);
@@ -64,7 +65,24 @@ auto main() -> int {
   list.print();
 
   std::print("Sorting list using digital sort...\n");
-  list.digitalSort(3);
+  list.digitalSort(1);
+
+  std::print("List elements after sorting: ");
+  list.print();
+
+  Mlist.pushFront('s');
+  Mlist.pushFront(2);
+  Mlist.pushFront(2);
+  Mlist.pushFront(1);
+  Mlist.pushFront(1);
+  Mlist.pushFront(1);
+  std::print("\n");
+
+  std::print("List elements: ");
+  list.print();
+
+  std::print("Sorting list using digital sort...\n");
+  list.mergeSort();
 
   std::print("List elements after sorting: ");
   list.print();
@@ -73,10 +91,10 @@ auto main() -> int {
 
   std::print("Number of series: {}\n", list.countSeries());
 
-  std::print("Printing recursively in forward order: ");
+  std::print("Printing recursively in reverse order: ");
   list.printRecursiveForward();
 
-  std::print("Printing recursively in reverse order: ");
+  std::print("Printing recursively in forward order: ");
   list.printRecursiveReverse();
 
   // Clear the list
@@ -110,6 +128,33 @@ auto main() -> int {
 
   // Clear the list
   list.clear();
+/*
+  listForMergeSort.pushFront(1);
+  listForMergeSort.pushFront(2);
+  listForMergeSort.pushFront(20);
+  listForMergeSort.pushFront(1);
+  listForMergeSort.pushFront(1);
+  listForMergeSort.pushFront(1);
+  std::print("\n");
 
+  std::print("List elements: ");
+  listForMergeSort.print();
+
+  std::print("Sorting list using merge sort...\n");
+  listForMergeSort.mergeSort();
+
+  std::print("List elements after sorting: ");
+  listForMergeSort.print();
+
+  std::print("Checksum: {}\n", list.check_sum());
+
+  std::print("Number of series: {}\n", list.countSeries());
+
+  std::print("Printing recursively in forward order: ");
+  list.printRecursiveForward();
+
+  std::print("Printing recursively in reverse order: ");
+  list.printRecursiveReverse();
+*/
   return 0;
 }

@@ -7,6 +7,7 @@
 
 #include <random>
 #include <print>
+#include <memory>
 #include "Node.hpp"
 
 namespace container {
@@ -32,6 +33,15 @@ class LinkedList {
    * @brief Destructor.
    */
   constexpr ~LinkedList() { clear(); }
+
+  /**
+   * @brief Get the size of the list.
+   *
+   * @return The size of the list.
+   */
+  [[nodiscard]] constexpr int Size() const noexcept {
+    return sizeOfList;
+  }
 
   /**
    * @brief Function to print the elements of the list.
@@ -178,6 +188,25 @@ class LinkedList {
   [[maybe_unused]] constexpr void pushFront(T newData) noexcept { head = new Node<T>(newData, head); }
 
   /**
+ * @brief Function to add a new node to the end of the list.
+ *
+ * @param newData The data to be added to the new node.
+   */
+  [[maybe_unused]] constexpr void pushBack(T newData) noexcept {
+    if (head == nullptr) {
+      head = new Node<T>(newData, head);
+      return;
+    }
+
+    Node<T>* current = head;
+    while (current->next != nullptr) {
+      current = current->next;
+    }
+
+    current->next = new Node<T>(newData, current);
+  };
+
+  /**
    * @brief Function to merge another list into the current list.
    *
    * @param otherList The list to be merged into the current list.
@@ -208,7 +237,58 @@ class LinkedList {
     }
 
     head = mergedList.head;
-    sizeOfList = mergedList.size();
+    sizeOfList = mergedList.Size();
+  }
+
+  /**
+  * @brief Function to perform merge sort on the list.
+   */
+  [[maybe_unused]] constexpr void mergeSort() noexcept {
+    if (Size() <= 1)
+      return;
+
+    LinkedList<T> leftHalf;
+    LinkedList<T> rightHalf;
+
+    int size = Size();
+    for (int i = 0; i < size / 2; ++i) {
+      leftHalf.pushFront(head->data);
+      head = head->next;
+    }
+    while (head != nullptr) {
+      rightHalf.pushFront(head->data);
+      head = head->next;
+    }
+
+    leftHalf.mergeSort();
+    rightHalf.mergeSort();
+
+    // merge the sorted halves
+    head = nullptr; // reset the head of the original list
+    while (leftHalf.head != nullptr && rightHalf.head != nullptr) {
+      if (leftHalf.head->data < rightHalf.head->data) {
+        pushBack(leftHalf.head->data); // add elements in sorted order
+        leftHalf.head = leftHalf.head->next;
+      } else {
+        pushBack(rightHalf.head->data); // dd elements in sorted order
+        rightHalf.head = rightHalf.head->next;
+      }
+    }
+
+    // merge remaining elements from leftHalf
+    while (leftHalf.head != nullptr) {
+      pushBack(leftHalf.head->data);
+      leftHalf.head = leftHalf.head->next;
+    }
+
+    // merge remaining elements from rightHalf
+    while (rightHalf.head != nullptr) {
+      pushBack(rightHalf.head->data);
+      rightHalf.head = rightHalf.head->next;
+    }
+
+    // update sizeOfList
+    sizeOfList = size;
   }
 
   /**
