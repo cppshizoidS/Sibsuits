@@ -82,7 +82,7 @@ auto main() -> int {
   list.print();
 
   std::print("Sorting list using digital sort...\n");
-  list.mergeSort();
+  list.digitalSort(6);
 
   std::print("List elements after sorting: ");
   list.print();
