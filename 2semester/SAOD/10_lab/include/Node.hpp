@@ -12,10 +12,11 @@
  */
 template <typename T>
 struct Node {
-  T data; ///< The data stored in the node.
-  Node<T> *next; ///< Pointer to the next node in the linked list.
+  T data;         ///< The data stored in the node.
+  Node<T> *next;  ///< Pointer to the next node in the linked list.
   /**
-   * @brief Constructor to initialize a node with data and a pointer to the next node.
+   * @brief Constructor to initialize a node with data and a pointer to the next
+   * node.
    *
    * @param newData The data to be stored in the node.
    * @param nextNode Pointer to the next node in the linked list.

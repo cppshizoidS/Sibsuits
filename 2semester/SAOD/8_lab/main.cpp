@@ -1,34 +1,27 @@
-#include <cstdio>
+#include <iomanip>
+#include <print>
 #include <vector>
+#include <cmath>
 
 #include "ArrFunc.hpp"
 #include "Sorts.hpp"
 
-int main() {
-    // clang-format off
-    printf("| Size array |          M and h        |        M + C shell               |       M + C quick                |\n");
-    printf("|            |                         | decreasing | random | increasing | decreasing | random | increasing |\n");
-    printf("|------------|-------------------------|----------------------------------|----------------------------------|\n");
-    // clang-format on
-    for (size_t len_arr = 100; len_arr <= 500; len_arr += 100) {
-        std::vector<int> Amin(len_arr);
-        std::vector<int> Amax(len_arr);
-        std::vector<int> Arand(len_arr);
+auto main() -> int {
+    std::println("|  N  | M + C teoretic |          M + C factic          |");
+    std::println("|     |                | decriment | random | increment |");
+    std::println("|-----|----------------|-----------|--------|-----------|");
 
-        FillDec(Amin, len_arr);
-        FillInc(Amax, len_arr);
-        FillRand(Arand, len_arr);
+    for (size_t len = 100; len <= 500; len += 100) {
+        std::vector<int> arr(len);
 
-        printf("| %10lu | ", len_arr);
+        std::print("|{:5}|{:16}|", len, static_cast<int>(2 * len * std::log2(len) + len + 2 + len * std::log2(len) + 6.5 * len - 4));
 
-        printf("%7lu %12lu | ", ShellSort(Amin, len_arr), ShellSort(Arand, len_arr));
-        printf("%9lu %6lu  | ", ShellSort(Amax, len_arr));
-
-        printf("%9lu %6lu |\n", QuickSort(Amin, len_arr), QuickSort(Amax, len_arr));
-
-        FillDec(Amin, len_arr);
-        FillInc(Amax, len_arr);
-        FillRand(Arand, len_arr);
+        FillDec(arr, len);
+        std::print("{:^11}|", QuickSort(arr));
+        FillRand(arr, len);
+        std::print("{:^8}|", QuickSort(arr));
+        FillInc(arr, len);
+        std::println("{:^11}|", QuickSort(arr));
     }
 
     return 0;

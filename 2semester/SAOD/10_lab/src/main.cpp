@@ -11,7 +11,7 @@ auto main() -> int {
   container::Stack<int> stack;
   container::Queue<int> queue;
   container::LinkedList<int> list;
-  container::LinkedList<int> Mlist;
+  container::LinkedList<int> listForMergeSort;
 
   std::print("Dec stack: ");
   stack.fill_dec(FILL_SIZE);
@@ -65,17 +65,17 @@ auto main() -> int {
   list.print();
 
   std::print("Sorting list using digital sort...\n");
-  list.digitalSort(1);
+  list.digitalSort(0);
 
   std::print("List elements after sorting: ");
   list.print();
 
-  Mlist.pushFront('s');
-  Mlist.pushFront(2);
-  Mlist.pushFront(2);
-  Mlist.pushFront(1);
-  Mlist.pushFront(1);
-  Mlist.pushFront(1);
+  listForMergeSort.pushFront('s');
+  listForMergeSort.pushFront(2);
+  listForMergeSort.pushFront(2);
+  listForMergeSort.pushFront(1);
+  listForMergeSort.pushFront(1);
+  listForMergeSort.pushFront(1);
   std::print("\n");
 
   std::print("List elements: ");
@@ -128,7 +128,7 @@ auto main() -> int {
 
   // Clear the list
   list.clear();
-/*
+
   listForMergeSort.pushFront(1);
   listForMergeSort.pushFront(2);
   listForMergeSort.pushFront(20);
@@ -155,6 +155,6 @@ auto main() -> int {
 
   std::print("Printing recursively in reverse order: ");
   list.printRecursiveReverse();
-*/
+
   return 0;
 }

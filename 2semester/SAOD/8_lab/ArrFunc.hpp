@@ -29,7 +29,7 @@ void FillInc(T &A, size_t len) {
  */
 template <typename T>
 void FillDec(T &A, size_t len) {
-  for (size_t i = 1; i <= len; i++) A[i - 1] = len - i;
+  for (size_t i = 0; i < len; i++) A[i] = len - (i + 1);
 }
 
 /**

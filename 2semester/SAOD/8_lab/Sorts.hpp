@@ -135,40 +135,38 @@ template <typename T> size_t ShellSort(T &A, size_t len) {
   return m + c;
 }
 
-template <typename T>
-size_t Partition(std::vector<T> &A, size_t low, size_t high, size_t &m, size_t &c) {
-    T pivot = A[high];
-    size_t i = low; // Change int to size_t
-    for (size_t j = low; j < high; j++) { // Change loop condition
-        c++;
-        if (A[j] < pivot) {
-            if (i != j) {
-                std::swap(A[i], A[j]);
-                m += 3;
-            }
-            i++;
+template <class T> int64_t HoaraSort(T &arr, int64_t left, int64_t right, size_t &m, size_t &c) {
+    auto pivo = arr[left];
+    m++;
+    while (left <= right) {
+        c += 2;
+        while (arr[left] < pivo) {
+            left++;
+            c++;
+        }
+        while (arr[right] > pivo) {
+            right--;
+            c++;
+        }
+        if (left <= right) {
+            std::swap(arr[left++], arr[right--]);
+            m += 3;
         }
     }
-    std::swap(A[i], A[high]);
-    m += 3;
-    return i;
+    return left;
 }
 
-template <typename T>
-void QuickSortHelper(std::vector<T> &A, size_t low, size_t high, size_t &m, size_t &c) {
-    if (low < high) { // Moved from Partition function
-        size_t pi = Partition(A, low, high, m, c);
-        if (pi > 0) // Add check to prevent underflow
-            QuickSortHelper(A, low, pi - 1, m, c);
-        QuickSortHelper(A, pi + 1, high, m, c);
-    }
+template <class T> void QuickSort(T &arr, int64_t start, int64_t end, size_t &m, size_t &c) {
+    if (start >= end)
+        return;
+    int64_t rightStart = HoaraSort(arr, start, end, m, c);
+    QuickSort(arr, start, rightStart - 1, m, c);
+    QuickSort(arr, rightStart, end, m, c);
 }
 
-template <typename T>
-size_t QuickSort(std::vector<T> &A, size_t len) {
+template <class T> size_t QuickSort(T &arr) {
     size_t m = 0, c = 0;
-    QuickSortHelper(A, 0, len - 1, m, c);
+    QuickSort(arr, 0, arr.size() - 1, m, c);
     return m + c;
 }
-
 #endif // SORTS_HPP

@@ -4,15 +4,13 @@
 #include <iostream> // Include iostream for std::cout and std::cin
 
 int main() {
-  std::vector<int> arr = {1, 2, 3, 4, 5,
-                          6, 7, 8, 9, 10}; // Пример упорядоченного массива
   int comparisons1 = 0, comparisons2 = 0;
   int position1, position2;
 
-    int x;
+    int size;
 
     std::cout << "Введите значение: "; 
-    std::cin >> x;
+    std::cin >> size;
 
     std::cout << "| Size array | Binary Search 1 | Binary Search 2 |\n"; 
     std::cout << "|------------|-----------------|-----------------|\n"; 
@@ -22,8 +20,8 @@ int main() {
 
         FillInc(arr, len_arr);
 
-        BinarySearch1(arr, len_arr, x);
-        BinarySearch2(arr, len_arr, x);
+        BinarySearch1(arr, len_arr, size);
+        BinarySearch2(arr, len_arr, size);
 
         std::cout << "| " << std::setw(11) << len_arr; 
         std::cout << " | " << std::setw(15) << COMPARE_BINARY_SEARCH_1; 
