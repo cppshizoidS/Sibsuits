@@ -43,3 +43,4 @@ CMakeCache.txt
 build_ninja
 cmake_install.cmake
 cmake-build-debug
+build
