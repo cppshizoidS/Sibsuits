@@ -1,13 +1,19 @@
 APP_NAME = geometry
 LIB_NAME = libgeometry
 TEST_NAME = main_test
+TARGET_PATH = ./bin/
 
-BIN = $(shell mkdir bin)
+BIN = $(shell mkdir -p bin && cp test.txt bin)
 
 TESTFLAGS = -I thirdparty
 CFLAGS = -Wall -I src
 DEPSFLAGS = -MMD
 CC = g++
+
+OBJ_PATH = ./obj/
+OBJ_SRC = ./obj/src/
+OBJ_LIB_PATH = ./obj/src/libgeometry/
+OBJ_TEST_PATH = ./obj/test/
 
 
 BIN_DIR = bin
@@ -47,17 +53,24 @@ $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $< -lm
 
 # TEST
-test: $(LIB_PATH) $(TEST_PATH)
+check:
+	if [ ! -d "$(OBJ_PATH)" ]; then mkdir $(OBJ_PATH); fi
+	if [ ! -d "$(OBJ_SRC)" ]; then mkdir $(OBJ_SRC); fi
+	if [ ! -d "$(OBJ_TEST_PATH)" ]; then mkdir $(OBJ_TEST_PATH); fi
+	if [ ! -d "$(OBJ_LIB_PATH)" ]; then mkdir $(OBJ_LIB_PATH); fi
+	if [ ! -d "$(TARGET_PATH)" ]; then mkdir $(TARGET_PATH); fi
+
+test: check $(LIB_PATH) $(TEST_PATH)
 	$(TEST_PATH)
 
 $(TEST_PATH): $(TEST_OBJECTS) $(LIB_PATH)
-	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -o $@ $^ -lm
+	$(CC) $(DEPSFLAGS) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -o $@ $^ -lm
 
 $(OBJ_DIR)/test/main.o: test/main.c
-	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
+	$(CC) $(DEPSFLAGS) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
 
 $(OBJ_DIR)/test/tests.o: test/tests.c
-	$(CC) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
+	$(CC) $(DEPSFLAGS) $(TESTFLAGS) $(CFLAGS) $(DEPSFLAGS) -c -o $@ $<
 
 # RUN
 run: all
