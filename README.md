@@ -75,7 +75,7 @@
 - [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
 - [3 Сборка приложения, Готовое приложение Geometry](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry)
 - [Готовое приложение Geometry версия на C++](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry_cpp_version)
-- [Курсач: игра жизнь](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/GameOfLife)
+- [Курсач: игра жизнь](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/GameOfLifeSFML)
 
 Так же в папке содержится [гайд](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) по гиту и сборке, тестированию и дебагу проектов C/C++ который можно найти [здесь](https://cppshizoids.github.io/TRPO/index.html)
 
