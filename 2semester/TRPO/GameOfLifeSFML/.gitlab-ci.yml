@@ -1,0 +1,30 @@
+ .install:
+  image: ubuntu:18.04
+  stage: install
+  before_script:
+    - apt-get update && apt-get install -y clang-format git-all cmake ninja-build googletest
+
+.check-codestyle:
+  script:
+    - echo "Check codestyle..."
+    - git ls-files *.{cpp,hpp} | xargs clang-format -i --verbose && git diff --exit-code
+    - echo "Codestyle is fine."
+
+.build:
+  script:
+    - echo "Start build"
+    - mkdir build
+    - cd build
+    - cmake .. -G=Ninja
+    - ninja
+    - echo "Build finished"
+
+.test-script:
+  script:
+    - ctest -R GameOfLifeTest
+
+stages:
+  - install
+  - check-codestyle
+  - build
+  - test
