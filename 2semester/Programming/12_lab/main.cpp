@@ -1,5 +1,6 @@
-#include "sorting.hpp"
 #include <vector>
+
+#include "sorting.hpp"
 
 auto main() -> int {
   std::vector<int> myArray;
@@ -15,5 +16,4 @@ auto main() -> int {
   Sorting::measureTime(
       myArray, [](std::vector<int> &arr) { Sorting::insertionSort(arr); },
       "Insertion sort", arraySize);
-
 }

@@ -177,7 +177,7 @@ class LinkedList {
    */
   [[maybe_unused]] constexpr void printRecursiveReverse() noexcept {
     printRecursiveReverse(head);
-    std::print("\n");  // Updated this line
+    std::print("\n");
   }
 
   /**

@@ -49,9 +49,9 @@ auto main() -> int {
   queue.printQueue();
 
   int queuesum = queue.check_sum();
-  std::print("Sum rand queue: {}\n", queuesum);
+  std::print("{}", "Sum rand queue:\n", queuesum, "\n");
   int queueseries = queue.check_series();
-  std::print("Series rand queue: {}\n", queueseries);
+  std::print("{}", "Series rand queue:\n", queueseries, "\n");
 
   list.pushFront('s');
   list.pushFront(2);

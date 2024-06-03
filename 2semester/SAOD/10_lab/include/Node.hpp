@@ -4,7 +4,6 @@
 // Node.hpp
 #ifndef NODE_HPP
 #define NODE_HPP
-
 /**
  * @brief A template struct representing a node in a linked list.
  *

@@ -7,6 +7,7 @@
 
 #include <random>
 #include <print>
+#include <iostream>
 #include "Node.hpp"
 
 namespace container {
