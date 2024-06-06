@@ -64,6 +64,7 @@
 - [8 Quick sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/8_lab)
 - [9 Heap sort](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/9_lab)
 - [10 Lits, Stack, Queue](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/SAOD/10_lab)
+- [11 Merge](https://github.com/cppshizoidS/Sibsuits/tree/main/2semester/SAOD/10_lab) (2 lab in 1)
 - [12 Hasing](https://github.com/cppshizoidS/Sibsuits/tree/main/2semester/SAOD/12_lab)
 
 - [Сортировка имени разными сортировками пошагово](https://github.com/cppshizoidS/SibsuitsLabs/blob/main/2semester/SAOD/name_sort/main.py)
