@@ -105,24 +105,28 @@ def shell_sort(word):
         for i in range(gap, n):
             temp = word_list[i]
             j = i
+            swapped_indices = []
             while j >= gap and word_list[j - gap] > temp:
                 word_list[j] = word_list[j - gap]
+                swapped_indices.append(j)
                 j -= gap
             word_list[j] = temp
+            swapped_indices.append(j)
 
             iteration += 1
             print_sorted_step_with_swaps(
-                word_list, [j], f'Shell Sort (Iteration {iteration}, Gap = {gap})')
+                word_list, swapped_indices, f'Shell Sort (Iteration {iteration}, Gap = {gap})')
 
         gap //= 2
 
     return ''.join(word_list)
 
 
-def heapify(word_list, n, i, swapped_indices):
+def heapify(word_list, n, i):
     largest = i
     left_child = 2 * i + 1
     right_child = 2 * i + 2
+    swapped_indices = []
 
     if left_child < n and word_list[i] < word_list[left_child]:
         largest = left_child
@@ -133,8 +137,8 @@ def heapify(word_list, n, i, swapped_indices):
     if largest != i:
         word_list[i], word_list[largest] = word_list[largest], word_list[i]
         swapped_indices.extend([i, largest])
-        heapify(word_list, n, largest, swapped_indices)
-
+        print_sorted_step_with_swaps(word_list, swapped_indices, 'Heapify')
+        heapify(word_list, n, largest)
 
 def heap_sort(word):
     word_list = list(word)
@@ -142,13 +146,13 @@ def heap_sort(word):
 
     # Build a max heap
     for i in range(n // 2 - 1, -1, -1):
-        heapify(word_list, n, i, [])
+        heapify(word_list, n, i)
 
     for i in range(n - 1, 0, -1):
         word_list[i], word_list[0] = word_list[0], word_list[i]
         print_sorted_step_with_swaps(word_list, [i, 0], 'Heap Sort')
 
-        heapify(word_list, i, 0, [])
+        heapify(word_list, i, 0)
 
     return ''.join(word_list)
 
@@ -178,11 +182,12 @@ def main():
     # # Selection Sort
     # sorted_word_selection = selection_sort(word)
     # print("\nWord sorted alphabetically using Selection Sort:",
-    #       sorted_word_selection)
+    #      sorted_word_selection)
 
     # # Insertion Sort
-    # sorted_word_insertion = insertion_sort(word)
-    # print("\nWord sorted alphabetically using Insertion Sort:", sorted_word_insertion)
+   # sorted_word_insertion = insertion_sort(word)
+   # print("\nWord sorted alphabetically using Insertion Sort:",
+   #       sorted_word_insertion)
 
     # # Bubble Sort
     # sorted_word_bubble = bubble_sort(word)
@@ -190,20 +195,20 @@ def main():
 
     # # Shaker Sort
     # sorted_word_shaker = shaker_sort(word)
-    # print("\nWord sorted alphabetically using Shaker Sort:", sorted_word_shaker)
+    #  print("\nWord sorted alphabetically using Shaker Sort:", sorted_word_shaker)
 
     # Shell Sort
     # sorted_word_shell = shell_sort(word)
     # print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
 
     # Heap Sort
-    # sorted_word_heap = heap_sort(word)
-    # print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
+    sorted_word_heap = heap_sort(word)
+    print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
 
     # Quick Sort
-    sorted_word_quick = quick_sort(list(word))
-    print("\nWord sorted alphabetically using Quick Sort:",
-          ''.join(sorted_word_quick))
+    # sorted_word_quick = quick_sort(list(word))
+    # print("\nWord sorted alphabetically using Quick Sort:",
+    #      ''.join(sorted_word_quick))
 
 
 if __name__ == "__main__":
