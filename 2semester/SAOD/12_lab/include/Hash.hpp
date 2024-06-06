@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lists.hpp"
+#include "./Lists.hpp"
 
 #include <cstddef>
 #include <stdexcept>

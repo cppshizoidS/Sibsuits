@@ -1,4 +1,5 @@
-#include "Hash.hpp"
+#include "../include/Hash.hpp"
+
 #include <cstddef>
 #include <cstring>
 
