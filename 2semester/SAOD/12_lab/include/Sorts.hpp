@@ -4,6 +4,8 @@
 
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
+#include <utility>
 #include <vector>
 
 template <typename T> std::size_t selectSort(T &arr, std::size_t len) {
@@ -66,8 +68,8 @@ template <typename T> std::size_t insertSort(T &arr, std::size_t len) {
     for (std::size_t i = 1; i < len; i++) {
         bool f = true;
         auto t = arr[i];
-        long long j = i - 1;
-        while (j > -1 and t < arr[j]) {
+        int64_t j = i - 1;
+        while (j > -1 && t < arr[j]) {
             f = false;
             arr[j + 1] = arr[j];
             j--;
@@ -84,7 +86,7 @@ template <typename T> std::size_t insertSort(T &arr, std::size_t len) {
 
 template <typename T> std::size_t shellSort(T &arr, std::size_t len) {
     std::size_t m = 0, c = 0;
-    std::size_t M = (int)std::log2(len) - 1;
+    std::size_t M = static_cast<int>(std::log2(len) - 1);
     std::vector<int> h(M);
     h[0] = 1;
     for (int i = 1; i < M; i++)
@@ -92,7 +94,7 @@ template <typename T> std::size_t shellSort(T &arr, std::size_t len) {
     for (int a = M - 1; a >= 0; a--) {
         for (std::size_t i = h[a]; i < len; i++) {
             bool f = true;
-            for (int j = i - h[a]; j >= 0 and arr[j] > arr[j + h[a]]; j -= h[a]) {
+            for (int j = i - h[a]; j >= 0 && arr[j] > arr[j + h[a]]; j -= h[a]) {
                 std::swap(arr[j], arr[j + h[a]]);
                 m += 3;
                 f = false;
@@ -107,7 +109,7 @@ template <typename T> std::size_t shellSort(T &arr, std::size_t len) {
 
 template <class T, class C> std::size_t shellSort(T &arr, std::size_t len, C commpare) {
     std::size_t m = 0, c = 0;
-    std::size_t M = (int)std::log2(len) - 1;
+    std::size_t M = static_cast<int>(std::log2(len) - 1);
     std::vector<int> h(M);
     h[0] = 1;
     for (int i = 1; i < M; i++)
@@ -115,7 +117,7 @@ template <class T, class C> std::size_t shellSort(T &arr, std::size_t len, C com
     for (int a = M - 1; a >= 0; a--) {
         for (std::size_t i = h[a]; i < len; i++) {
             bool f = true;
-            for (int j = i - h[a]; j >= 0 and commpare(arr[j], arr[j + h[a]]); j -= h[a]) {
+            for (int j = i - h[a]; j >= 0 && commpare(arr[j], arr[j + h[a]]); j -= h[a]) {
                 std::swap(arr[j], arr[j + h[a]]);
                 m += 3;
                 f = false;
@@ -135,7 +137,7 @@ template <typename T> void buildHeap(T &arr, std::size_t l, std::size_t r, std::
         std::size_t j = 2 * i;
         if (j > r)
             break;
-        if (j < r and arr[j + 1] <= arr[j])
+        if (j < r && arr[j + 1] <= arr[j])
             j++;
         c++;
         if (x <= arr[j]) {
@@ -153,7 +155,7 @@ template <typename T> void buildHeap(T &arr, std::size_t l, std::size_t r, std::
 
 template <typename T> std::size_t heapSort(T &arr, std::size_t len) {
     std::size_t m = 0, c = 0;
-    for (long long l = len / 2; l >= 0; l--)
+    for (int64_t l = len / 2; l >= 0; l--)
         buildHeap(arr, l, len - 1, m, c);
     std::size_t r = len - 1;
     while (r > 0) {
@@ -202,7 +204,7 @@ template <typename T> std::size_t quickSort(T &arr, std::size_t len) {
 template <typename T> std::size_t merge(list<T> &a, std::size_t size_a, list<T> &b, std::size_t size_b, queue<T> &c) {
     std::size_t move_copare = 0;
 
-    while (size_a > 0 and size_b > 0) {
+    while (size_a > 0 && size_b > 0) {
         if (a(0) <= b(0)) {
             c.push(a.pop_front());
             size_a--;

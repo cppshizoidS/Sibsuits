@@ -7,8 +7,10 @@
 
 #include <cmath>
 #include <cstddef>
-#include <vector>
+#include <cstdint>
 #include <print>
+#include <utility>
+#include <vector>
 
 /**
  * @brief Swaps two elements.
@@ -55,8 +57,7 @@ size_t SelectSort(T &A, size_t len) {
   for (size_t i = 0; i < len - 1; i++) {
     int snp = i;
     for (size_t j = i + 1; j < len; j++) {
-      if (A[j] < A[snp])
-        snp = j;
+      if (A[j] < A[snp]) snp = j;
       c++;
     }
     Swap(A[i], A[snp]);
@@ -137,16 +138,15 @@ size_t InsertSort(T &A, size_t len) {
   for (size_t i = 1; i < len; i++) {
     bool f = true;
     auto t = A[i];
-    long long j = i - 1;
-    while (j > -1 and t < A[j]) {
+    int64_t j = i - 1;
+    while (j > -1 && t < A[j]) {
       f = false;
       A[j + 1] = A[j];
       j--;
       c++;
       m++;
     }
-    if (f)
-      c++;
+    if (f) c++;
     A[j + 1] = t;
     m += 2;
   }
@@ -168,26 +168,23 @@ size_t ShellSort(T &A, size_t len) {
   int M = static_cast<int>(std::log2(len)) - 1;
   int h[M];
   h[0] = 1;
-  for (int i = 1; i < M; i++)
-    h[i] = 2 * h[i - 1] + 1;
+  for (int i = 1; i < M; i++) h[i] = 2 * h[i - 1] + 1;
   for (int a = M - 1; a >= 0; a--) {
     for (size_t i = h[a]; i < len; i++) {
       bool f = true;
-      for (int j = i - h[a]; j >= 0 and A[j] > A[j + h[a]]; j -= h[a]) {
+      for (int j = i - h[a]; j >= 0 && A[j] > A[j + h[a]]; j -= h[a]) {
         Swap(A[j], A[j + h[a]]);
         m += 3;
         f = false;
         c++;
       }
-      if (f)
-        c++;
+      if (f) c++;
     }
   }
 
   if (F) {
     std::print("|{} ", M);
-    for (int i = 0; i < M; i++)
-      std::print(" {}", h[i]);
+    for (int i = 0; i < M; i++) std::print(" {}", h[i]);
 
     if (M < 6)
       std::print("       ");
@@ -212,10 +209,11 @@ size_t ShellSort(T &A, size_t len) {
  * @return Partition index.
  */
 template <typename T>
-size_t Partition(std::vector<T> &A, size_t low, size_t high, size_t &m, size_t &c) {
+size_t Partition(std::vector<T> &A, size_t low, size_t high, size_t &m,
+                 size_t &c) {
   T pivot = A[high];
-  size_t i = low; // Change int to size_t
-  for (size_t j = low; j < high; j++) { // Change loop condition
+  size_t i = low;                        // Change int to size_t
+  for (size_t j = low; j < high; j++) {  // Change loop condition
     c++;
     if (A[j] < pivot) {
       if (i != j) {
@@ -241,10 +239,11 @@ size_t Partition(std::vector<T> &A, size_t low, size_t high, size_t &m, size_t &
  * @param c Number of comparisons.
  */
 template <typename T>
-void QuickSortHelper(std::vector<T> &A, size_t low, size_t high, size_t &m, size_t &c) {
-  if (low < high) { // Moved from Partition function
+void QuickSortHelper(std::vector<T> &A, size_t low, size_t high, size_t &m,
+                     size_t &c) {
+  if (low < high) {  // Moved from Partition function
     size_t pi = Partition(A, low, high, m, c);
-    if (pi > 0) // Add check to prevent underflow
+    if (pi > 0)  // Add check to prevent underflow
       QuickSortHelper(A, low, pi - 1, m, c);
     QuickSortHelper(A, pi + 1, high, m, c);
   }

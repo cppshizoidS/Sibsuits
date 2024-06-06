@@ -1,6 +1,7 @@
 #ifndef SEARCH_HPP
 #define SEARCH_HPP
 
+#include <cstdint>
 #include <iostream>
 #include <vector>
 
@@ -19,14 +20,14 @@ constexpr size_t COMPARE_BINARY_SEARCH_1 = 0;
 constexpr int ELEMENT_IS_NOT_FOUND = -1;
 
 template <typename TArr, typename TElem>
-constexpr long long BinarySearch1(const TArr &arr, size_t len, TElem x) {
+constexpr int64_t BinarySearch1(const TArr &arr, size_t len, TElem x) {
   size_t COMPARE_BINARY_SEARCH_1 = 0;
   size_t left = 0, right = len - 1;
 
   while (left <= right) {
     size_t middle = (left + right) / 2;
     COMPARE_BINARY_SEARCH_1++;
-    if (arr[middle] == x) return static_cast<long long>(middle);
+    if (arr[middle] == x) return static_cast<int64_t>(middle);
 
     if (arr[middle] < x)
       left = middle + 1;
@@ -49,7 +50,7 @@ constexpr long long BinarySearch1(const TArr &arr, size_t len, TElem x) {
  * found.
  */
 template <typename TArr, typename TElem>
-long long BinarySearch2(const TArr &arr, size_t len, TElem x) {
+int64_t BinarySearch2(const TArr &arr, size_t len, TElem x) {
   int key;
   size_t COMPARE_BINARY_SEARCH_2 = 0;
   std::cout << "Enter the search key: ";
@@ -68,7 +69,7 @@ long long BinarySearch2(const TArr &arr, size_t len, TElem x) {
     COMPARE_BINARY_SEARCH_2++;
   }
   COMPARE_BINARY_SEARCH_2++;
-  if (arr[right] == x) return (long long)right;
+  if (arr[right] == x) return static_cast<int64_t>(right);
   return ELEMENT_IS_NOT_FOUND;
 
   return position;
