@@ -80,7 +80,7 @@
 - [Курсач: игра жизнь](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/GameOfLifeSFML)
 
 [ДМ Дискретная математика](https://github.com/cppshizoidS/Sibsuits/blob/main/2semester/DiscreteMath)
-- [вопросы к эзамену](https://github.com/cppshizoidS/Sibsuits/blob/main/2semester/DiscreteMath/ekz.tex)
+- [Вопросы к экзамену](https://github.com/cppshizoidS/Sibsuits/blob/main/2semester/DiscreteMath/ekz.tex)
 
 Так же в папке содержится [гайд](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO) по гиту и сборке, тестированию и дебагу проектов C/C++ который можно найти [здесь](https://cppshizoids.github.io/TRPO/index.html)
 
