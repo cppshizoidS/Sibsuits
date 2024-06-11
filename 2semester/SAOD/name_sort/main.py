@@ -140,6 +140,7 @@ def heapify(word_list, n, i):
         print_sorted_step_with_swaps(word_list, swapped_indices, 'Heapify')
         heapify(word_list, n, largest)
 
+
 def heap_sort(word):
     word_list = list(word)
     n = len(word_list)
@@ -202,13 +203,13 @@ def main():
     # print("\nWord sorted alphabetically using Shell Sort:", sorted_word_shell)
 
     # Heap Sort
-    sorted_word_heap = heap_sort(word)
-    print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
+    # sorted_word_heap = heap_sort(word)
+    # print("\nWord sorted alphabetically using Heap Sort:", sorted_word_heap)
 
     # Quick Sort
-    # sorted_word_quick = quick_sort(list(word))
-    # print("\nWord sorted alphabetically using Quick Sort:",
-    #      ''.join(sorted_word_quick))
+    sorted_word_quick = quick_sort(list(word))
+    print("\nWord sorted alphabetically using Quick Sort:",
+          ''.join(sorted_word_quick))
 
 
 if __name__ == "__main__":
