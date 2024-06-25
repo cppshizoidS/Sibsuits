@@ -76,7 +76,7 @@
 - [1 Основы git, основы make](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_1)
 - [2 Ветвеление](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/lab_2)
 - [3 Сборка приложения, Готовое приложение Geometry](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry)
-- [Готовое приложение Geometry версия на C++](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry_cpp_version)
+- [Готовое приложение Geometry(Парсер WKT) версия на C++](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/geometry_cpp_version)
 - [Курсач: игра жизнь](https://github.com/cppshizoidS/SibsuitsLabs/tree/main/2semester/TRPO/GameOfLifeSFML)
 
 [ДМ Дискретная математика](https://github.com/cppshizoidS/Sibsuits/blob/main/2semester/DiscreteMath)
